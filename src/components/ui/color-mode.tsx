@@ -34,7 +34,7 @@ export function useColorModeValue<T>(light: T, dark: T) {
 
 export function ColorModeIcon() {
   const { colorMode } = useColorMode()
-  return colorMode === "light" ? <LuSun /> : <LuMoon />
+  return colorMode === "light" ? <LuMoon /> : <LuSun />
 }
 
 interface ColorModeButtonProps extends Omit<IconButtonProps, "aria-label"> {}
@@ -48,9 +48,9 @@ export const ColorModeButton = React.forwardRef<
     <ClientOnly fallback={<Skeleton boxSize="8" />}>
       <IconButton
         onClick={toggleColorMode}
-        variant="ghost"
+        variant="solid"
         aria-label="Toggle color mode"
-        size="sm"
+        size="lg"
         ref={ref}
         {...props}
         css={{

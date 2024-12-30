@@ -11,7 +11,7 @@ import {
   VStack,
 } from "@chakra-ui/react"
 import { ColorModeToggle } from "../components/color-mode-toggle"
-
+import { ColorModeButton } from "../components/ui/color-mode"
 export default function Page() {
   return (
     <Box textAlign="center" fontSize="xl" pt="30vh">
@@ -60,9 +60,9 @@ export default function Page() {
         </HStack>
       </VStack>
 
-      <Box pos="absolute" top="4" right="4">
+      <Box pos="absolute" top="6" right="6">
         <ClientOnly fallback={<Skeleton w="10" h="10" rounded="md" />}>
-          <ColorModeToggle />
+          <ColorModeButton />
         </ClientOnly>
       </Box>
     </Box>
