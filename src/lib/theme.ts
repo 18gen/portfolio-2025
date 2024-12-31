@@ -39,6 +39,11 @@ const config = defineConfig({
         },
       },
     },
+    textStyles : {
+      value: {
+        fontFamily: 'M PLUS Rounded 1c',
+      }
+    }
   },
 })
 

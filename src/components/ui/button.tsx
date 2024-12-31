@@ -6,6 +6,7 @@ import {
   Spinner,
 } from "@chakra-ui/react"
 import * as React from "react"
+import { useColorModeValue } from "./color-mode"
 
 interface ButtonLoadingProps {
   loading?: boolean
@@ -16,6 +17,7 @@ export interface ButtonProps extends ChakraButtonProps, ButtonLoadingProps {}
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   function Button(props, ref) {
+    const bgColor = useColorModeValue("#ffffff40", "#20202380")
     const { loading, disabled, loadingText, children, ...rest } = props
     return (
       <ChakraButton disabled={loading || disabled} ref={ref} {...rest}>

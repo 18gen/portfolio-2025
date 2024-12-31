@@ -1,70 +1,53 @@
 import {
   Box,
-  Button,
-  Checkbox,
-  ClientOnly,
-  HStack,
+  Container,
+  Flex,
   Heading,
-  Progress,
-  RadioGroup,
-  Skeleton,
+  Text,
   VStack,
-} from "@chakra-ui/react"
-import { ColorModeToggle } from "../components/color-mode-toggle"
-import { ColorModeButton } from "../components/ui/color-mode"
+} from "@chakra-ui/react";
+import { Avatar } from "@/components/ui/avatar";
+import { useColorModeValue } from "@/components/ui/color-mode"
 export default function Page() {
   return (
-    <Box textAlign="center" fontSize="xl" pt="30vh">
-      <VStack gap="8">
-        <Heading size="2xl" letterSpacing="tight">
-          Welcome to Chakra UI v3 + Next.js (App)
-        </Heading>
+    <Container maxW="container.md" pt={14}>
 
-        <HStack gap="10">
-          <Checkbox.Root defaultChecked>
-            <Checkbox.HiddenInput />
-            <Checkbox.Control>
-              <Checkbox.Indicator />
-            </Checkbox.Control>
-            <Checkbox.Label>Checkbox</Checkbox.Label>
-          </Checkbox.Root>
+    <Box display="flex" alignItems="center" justifyContent="center" px={4}>
+      <VStack spacing={6} align="center">
+        {/* Greeting Box */}
+        <Box
+          borderRadius="lg"
+          p={3}
+          textAlign="center"
+          background="gray.700"
+          width="100%"
+          css={{ backdropFilter: 'blur(10px)' }}
+        >
+          Hello, I&apos;m a full-stack developer in Japan!
+        </Box>
 
-          <RadioGroup.Root display="inline-flex" defaultValue="1">
-            <RadioGroup.Item value="1" mr="2">
-              <RadioGroup.ItemHiddenInput />
-              <RadioGroup.ItemControl>
-                <RadioGroup.ItemIndicator />
-              </RadioGroup.ItemControl>
-              <RadioGroup.ItemText lineHeight="1">Radio</RadioGroup.ItemText>
-            </RadioGroup.Item>
+        {/* Main Content */}
+        <Flex
+          align="center"
+          justify="center"
+          direction={{ base: "column", md: "row" }}
+          gap={8}
+        >
+          {/* Left: Name and Description */}
+          <Box textAlign={{ base: "center", md: "left" }}>
+            <Heading size="2xl" fontWeight="bold" letterSpacing="tight">
+              Gen Ichihashi
+            </Heading>
+            <Text fontSize="lg" mt={2} opacity={0.8}>
+              student at Waterloo
+            </Text>
+          </Box>
 
-            <RadioGroup.Item value="2">
-              <RadioGroup.ItemHiddenInput />
-              <RadioGroup.ItemControl>
-                <RadioGroup.ItemIndicator />
-              </RadioGroup.ItemControl>
-              <RadioGroup.ItemText lineHeight="1">Radio</RadioGroup.ItemText>
-            </RadioGroup.Item>
-          </RadioGroup.Root>
-        </HStack>
-
-        <Progress.Root width="300px" value={65} striped>
-          <Progress.Track>
-            <Progress.Range />
-          </Progress.Track>
-        </Progress.Root>
-
-        <HStack>
-          <Button>Let's go!</Button>
-          <Button variant="outline">bun install @chakra-ui/react</Button>
-        </HStack>
+          {/* Right: Avatar */}
+          <Avatar size="2xl" name="Gen" src="me.jpg" />
+        </Flex>
       </VStack>
-
-      <Box pos="absolute" top="6" right="6">
-        <ClientOnly fallback={<Skeleton w="10" h="10" rounded="md" />}>
-          <ColorModeButton />
-        </ClientOnly>
-      </Box>
     </Box>
-  )
+    </Container>
+  );
 }
