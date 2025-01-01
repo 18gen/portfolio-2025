@@ -39,11 +39,21 @@ const config = defineConfig({
         },
       },
     },
-    textStyles : {
-      value: {
-        fontFamily: 'M PLUS Rounded 1c',
-      }
-    }
+    tokens: {
+      fonts: {
+        heading: { value: "BlinkMacSystemFont" },
+        body: { value: "BlinkMacSystemFont" },
+      },
+      fontSizes: {
+        heading: { value: "5xl" },
+        body: { value: "sm"},
+      },
+    },
+    // textStyles : {
+    //   value: {
+    //     fontFamily: 'M PLUS Rounded 1c',
+    //   }
+    // }
   },
 })
 
