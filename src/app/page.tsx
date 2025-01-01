@@ -10,10 +10,10 @@ import { Avatar } from "@/components/ui/avatar";
 import { useColorModeValue } from "@/components/ui/color-mode"
 export default function Page() {
   return (
-    <Container maxW="container.md" pt={14}>
+    <Container pt={14}>
 
     <Box display="flex" alignItems="center" justifyContent="center" px={4}>
-      <VStack spacing={6} align="center">
+      <VStack align="center">
         {/* Greeting Box */}
         <Box
           borderRadius="lg"

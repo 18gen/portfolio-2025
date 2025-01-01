@@ -45,79 +45,65 @@ export default function Navbar() {
     <Box
       position="fixed"
       as="nav"
-      w="100%"
       css={{ backdropFilter: "blur(10px)" }}
       zIndex={2}
-      px={3}
+      w="100%"
       py={1.5}
     >
-      {/* Replaced Container with Flex */}
-      <Flex
-        display="flex"
-        maxW="container.md"
-        mx="auto"
-        align="center"
-        justify="space-between"
-      >
-        {/* Left: Logo */}
-        <Flex align="center" flexShrink={0}>
+      <Container display={"flex"} maxW={"2xl"} alignItems={"center"} justifyContent={"space-between"}>
           <Heading as="h1" size="lg" letterSpacing="tighter">
             <Logo />
           </Heading>
-        </Flex>
 
-        {/* Center: Links */}
-        <Stack
-          direction={{ base: "column", md: "row" }}
-          display={{ base: "none", md: "flex" }}
-          flexGrow={1}
-          justify="center"
-          align="center"
-        >
-          <Link href="/works" passHref>
-            <Button as="a" variant="ghost" {...buttonHoverStyles}>
-              Works
-            </Button>
-          </Link>
-          <Link href="/projects" passHref>
-            <Button as="a" variant="ghost" {...buttonHoverStyles}>
-              Projects
-            </Button>
-          </Link>
-          <Link href="/journey" passHref>
-            <Button as="a" variant="ghost" {...buttonHoverStyles}>
-              Journey
-            </Button>
-          </Link>
-        </Stack>
+          <Stack
+            direction={{ base: "column", md: "row" }}
+            display={{ base: "none", md: "flex" }}
+            flexGrow={1}
+            justify="center"
+            align="center"
+          >
+            <Link href="/works" passHref>
+              <Button as="a" variant="ghost" {...buttonHoverStyles}>
+                Works
+              </Button>
+            </Link>
+            <Link href="/projects" passHref>
+              <Button as="a" variant="ghost" {...buttonHoverStyles}>
+                Projects
+              </Button>
+            </Link>
+            <Link href="/journey" passHref>
+              <Button as="a" variant="ghost" {...buttonHoverStyles}>
+                Journey
+              </Button>
+            </Link>
+          </Stack>
 
-        {/* Right: ColorMode Button + Menu */}
-        <Flex align="center" flexShrink={0}>
-          <ColorModeButton />
-
-          <MenuRoot closeOnSelect={true}>
-            <MenuTrigger
-              asChild
-              display={{ base: "flex", md: "none" }}
-              ml={2}
-            >
-              <IconButton
-                variant="outline"
-                aria-label="Open Menu"
-                size="md"
+          <Box display={"flex"}>
+            <ColorModeButton />
+            <MenuRoot closeOnSelect={true}>
+              <MenuTrigger
+                asChild
+                display={{ base: "flex", md: "none" }}
+                ml={2}
               >
-                <IoIosMenu />
-              </IconButton>
-            </MenuTrigger>
-            <MenuContent>
-              <Link href="/"><MenuItem value="/">Home</MenuItem></Link>
-              <Link href="/works"><MenuItem value="/works">Works</MenuItem></Link>
-              <Link href="/projects"><MenuItem value="/projects">Projects</MenuItem></Link>
-              <Link href="/journey"><MenuItem value="/journey">Journey</MenuItem></Link>
-            </MenuContent>
-          </MenuRoot>
-        </Flex>
-      </Flex>
+                <IconButton
+                  variant="outline"
+                  aria-label="Open Menu"
+                  size="md"
+                >
+                  <IoIosMenu />
+                </IconButton>
+              </MenuTrigger>
+              <MenuContent>
+                <Link href="/"><MenuItem value="/">Home</MenuItem></Link>
+                <Link href="/works"><MenuItem value="/works">Works</MenuItem></Link>
+                <Link href="/projects"><MenuItem value="/projects">Projects</MenuItem></Link>
+                <Link href="/journey"><MenuItem value="/journey">Journey</MenuItem></Link>
+              </MenuContent>
+            </MenuRoot>
+          </Box>
+      </Container>
     </Box>
   );
 }
