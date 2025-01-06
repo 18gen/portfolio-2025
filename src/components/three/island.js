@@ -2,13 +2,13 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { loadGLTFModel } from '../../lib/model'
-import { DogSpinner, DogContainer } from './voxel-dog-loader'
+import { IslandSpinner, IslandContainer } from './island-loader'
 
 function easeOutCirc(x) {
   return Math.sqrt(1 - Math.pow(x - 1, 4))
 }
 
-const VoxelDog = () => {
+const Island = () => {
   const refContainer = useRef()
   const [loading, setLoading] = useState(true)
   const refRenderer = useRef()
@@ -68,52 +68,26 @@ const VoxelDog = () => {
 
     // LIGHTING SETUP
     // 1) Hemisphere Light (Sky and Ground Illumination)
-    const hemisphereLight = new THREE.HemisphereLight(0xa2d5f2, 0x57a773, 0.8) // Sky, Ground, Intensity
+    const hemisphereLight = new THREE.HemisphereLight(0xa2d5f2, 0x57a773, 0.8)
     scene.add(hemisphereLight)
 
-    // 2) Ambient Light for Global Illumination
-    const ambientLight = new THREE.AmbientLight(0x888888, 0.6) // Slight brightness for the whole scene
-    scene.add(ambientLight)
-
-    // 3) Directional Light (Main Sunlight)
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 5) // White light with strong intensity
-    directionalLight.position.set(0, 0, 0) // Adjust for dramatic angle
-    directionalLight.castShadow = true
-    // directionalLight.shadow.mapSize.width = 2048 // High-resolution shadows
-    // directionalLight.shadow.mapSize.height = 2048
-    // directionalLight.shadow.camera.left = -50
-    // directionalLight.shadow.camera.right = 50
-    // directionalLight.shadow.camera.top = 50
-    // directionalLight.shadow.camera.bottom = -50
-    scene.add(directionalLight)
-
-    // // Optional: Add Spotlight for extra focus (if needed)
-    // const spotLight = new THREE.SpotLight(0xffffff, 0.7)
-    // spotLight.position.set(15, 30, 10) // Position from above
-    // spotLight.angle = 0.4 // Slightly wider spotlight
-    // spotLight.penumbra = 0.8 // Soft edges
-    // spotLight.castShadow = true
-    // spotLight.shadow.mapSize.width = 1024
-    // spotLight.shadow.mapSize.height = 1024
-    // scene.add(spotLight)
-
+    // 2) Spot Light
+    const spotLight = new THREE.SpotLight(0xffffff, 1050)
+    spotLight.position.set(3, 11, 9)
+    spotLight.shadow.mapSize.width = 1024
+    spotLight.shadow.mapSize.height = 1024
+    scene.add(spotLight)
 
     // CONTROLS
     const controls = new OrbitControls(camera, renderer.domElement)
-    // controls.autoRotate = true
+    controls.autoRotate = true
     controls.target = target
 
     // Load model
     loadGLTFModel(scene, urlDogGLB, {
       receiveShadow: true, // make it true
       castShadow: true
-    }).then((gltf) => {
-      // const model = gltf.scene
-      // if (model) {
-      //   // Example: Rotate 30 degrees clockwise
-      //   model.rotation.x = Math.PI
-      //   scene.add(model)
-      // }
+    }).then(() => {
       animate()
       setLoading(false)
     })
@@ -156,11 +130,11 @@ const VoxelDog = () => {
   }, [handleWindowResize])
 
   return (
-    <DogContainer ref={refContainer}>
-      {loading && <DogSpinner />}
-    </DogContainer>
+    <IslandContainer ref={refContainer}>
+      {loading && <IslandSpinner />}
+    </IslandContainer>
   )
 }
 
-export default VoxelDog
+export default Island
 

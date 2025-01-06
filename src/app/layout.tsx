@@ -4,11 +4,11 @@ import { Inter } from "next/font/google"
 import Provider from "./provider"
 import Navbar from "@/components/navbar"
 import dynamic from 'next/dynamic'
-import VoxelDogLoader from '@/components/three/voxel-dog-loader'
+import IslandLoader from '@/components/three/island-loader'
 
-const LazyVoxelDog = dynamic(() => import('@/components/three/voxel-dog'), {
+const LazyIsland = dynamic(() => import('@/components/three/island'), {
   ssr: false,
-  loading: () => <VoxelDogLoader />
+  loading: () => <IslandLoader />
 })
 
 // const inter = Inter({ subsets: ["greek"], display: "swap" })
@@ -20,7 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Provider>
           <Navbar />
-          <LazyVoxelDog />
+          <LazyIsland />
           {children}
         </Provider>
       </body>
