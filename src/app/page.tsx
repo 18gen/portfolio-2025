@@ -12,7 +12,7 @@ import { Avatar } from "@/components/ui/avatar";
 import { useColorModeValue } from "@/components/ui/color-mode"
 export default function Page() {
   return (
-    <Container pt={14} maxW={{ base: "md", md: "xl" }}>
+    <Container pt={8} maxW={{ base: "md", md: "2xl" }}>
       <Box >
         <Box
           borderRadius="lg"
