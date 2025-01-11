@@ -48,9 +48,9 @@ export default function Navbar() {
       css={{ backdropFilter: "blur(10px)" }}
       zIndex={2}
       w="100%"
-      py={1.5}
+      py={2}
     >
-      <Container display={"flex"} maxW={"2xl"} alignItems={"center"} justifyContent={"space-between"}>
+      <Container display={"flex"} maxW={"3xl"} alignItems={"center"} justifyContent={"space-between"}>
           <Heading as="h1" size="lg" letterSpacing="tighter">
             <Logo />
           </Heading>
@@ -63,17 +63,17 @@ export default function Navbar() {
             align="center"
           >
             <Link href="/works" passHref>
-              <Button as="a" variant="ghost" {...buttonHoverStyles}>
+              <Button variant="ghost" {...buttonHoverStyles}>
                 Works
               </Button>
             </Link>
             <Link href="/projects" passHref>
-              <Button as="a" variant="ghost" {...buttonHoverStyles}>
+              <Button variant="ghost" {...buttonHoverStyles}>
                 Projects
               </Button>
             </Link>
             <Link href="/journey" passHref>
-              <Button as="a" variant="ghost" {...buttonHoverStyles}>
+              <Button variant="ghost" {...buttonHoverStyles}>
                 Journey
               </Button>
             </Link>
