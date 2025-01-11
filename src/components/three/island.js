@@ -12,9 +12,9 @@ const Island = () => {
   const refContainer = useRef()
   const [loading, setLoading] = useState(true)
   const refRenderer = useRef()
-  const urlDogGLB =
+  const urlIslandGLB =
     (process.env.NODE_ENV === 'production' ? 'https://genichihashi.me' : '') +
-    '/dog.glb'
+    '/island.glb'
 
   const handleWindowResize = useCallback(() => {
     const { current: renderer } = refRenderer
@@ -48,7 +48,7 @@ const Island = () => {
     const scene = new THREE.Scene()
 
     // Target and camera setup
-    const target = new THREE.Vector3(1, 1, 0.5)
+    const target = new THREE.Vector3(1, 1, 0)
     const initialCameraPosition = new THREE.Vector3(
       Math.sin(0.2 * Math.PI),
       Math.sin(0.2 * Math.PI),
@@ -68,14 +68,12 @@ const Island = () => {
 
     // LIGHTING SETUP
     // 1) Hemisphere Light (Sky and Ground Illumination)
-    const hemisphereLight = new THREE.HemisphereLight(0xa2d5f2, 0x57a773, 0.8)
+    const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.2)
     scene.add(hemisphereLight)
 
     // 2) Spot Light
     const spotLight = new THREE.SpotLight(0xffffff, 1050)
     spotLight.position.set(3, 11, 9)
-    spotLight.shadow.mapSize.width = 1024
-    spotLight.shadow.mapSize.height = 1024
     scene.add(spotLight)
 
     // CONTROLS
@@ -84,7 +82,7 @@ const Island = () => {
     controls.target = target
 
     // Load model
-    loadGLTFModel(scene, urlDogGLB, {
+    loadGLTFModel(scene, urlIslandGLB, {
       receiveShadow: true, // make it true
       castShadow: true
     }).then(() => {
@@ -100,7 +98,7 @@ const Island = () => {
 
       if (frame <= 100) {
         frame += 1
-        const rotSpeed = -easeOutCirc(frame / 120) * Math.PI * 20
+        const rotSpeed = -easeOutCirc(frame / 120) * Math.PI * 10
         camera.position.y = 5
         camera.position.x =
           initialCameraPosition.x * Math.cos(rotSpeed) +

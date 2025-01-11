@@ -15,12 +15,12 @@ export const IslandSpinner = () => (
 export const IslandContainer = forwardRef(({ children }, ref) => (
   <Box
     ref={ref}
-    className="voxel-dog"
+    className="island"
     m="auto"
     pt={{ base: "50px", md: "30px" }}
-    mb={{ base: '-130px', md: '-200px' }}
+    mb={{ base: '-130px', md: '-180px' }}
     w={{ base: 450, md: 650 }}
-    h={{ base: 450, md: 600 }}
+    h={{ base: 450, md: 550 }}
     position="relative"
   >
     {children}
