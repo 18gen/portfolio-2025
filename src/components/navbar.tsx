@@ -6,11 +6,12 @@ import {
   Heading,
   Stack,
   IconButton,
-  Container
+  Container,
+  Link
 } from "@chakra-ui/react"
-import Link from "next/link"
 import { ColorModeButton } from "../components/ui/color-mode"
 import { Button } from "../components/ui/button"
+import NextLink from "next/link"
 import Logo from "./logo"
 import {
   MenuContent,
@@ -19,6 +20,7 @@ import {
   MenuTrigger,
 } from "@/components/ui/menu"
 import { IoIosMenu } from "react-icons/io";
+import { FaGithub } from "react-icons/fa";
 
 export default function Navbar() {
 
@@ -62,20 +64,23 @@ export default function Navbar() {
             justify="center"
             align="center"
           >
-            <Link href="/works" passHref>
+            <NextLink href="/works" passHref>
               <Button variant="ghost" {...buttonHoverStyles}>
                 Works
               </Button>
-            </Link>
-            <Link href="/projects" passHref>
+            </NextLink>
+            <NextLink href="/projects" passHref>
               <Button variant="ghost" {...buttonHoverStyles}>
                 Projects
               </Button>
-            </Link>
-            <Link href="/journey" passHref>
+            </NextLink>
+            <NextLink href="/journey" passHref>
               <Button variant="ghost" {...buttonHoverStyles}>
                 Journey
               </Button>
+            </NextLink>
+            <Link href="https://github.com/18gen">
+              <Button size={"md"} colorPalette="gray" variant="ghost">{<FaGithub/>} Github</Button>
             </Link>
           </Stack>
 
@@ -96,10 +101,10 @@ export default function Navbar() {
                 </IconButton>
               </MenuTrigger>
               <MenuContent>
-                <Link href="/"><MenuItem value="/">Home</MenuItem></Link>
-                <Link href="/works"><MenuItem value="/works">Works</MenuItem></Link>
-                <Link href="/projects"><MenuItem value="/projects">Projects</MenuItem></Link>
-                <Link href="/journey"><MenuItem value="/journey">Journey</MenuItem></Link>
+                <NextLink href="/"><MenuItem value="/">Home</MenuItem></NextLink>
+                <NextLink href="/works"><MenuItem value="/works">Works</MenuItem></NextLink>
+                <NextLink href="/projects"><MenuItem value="/projects">Projects</MenuItem></NextLink>
+                <NextLink href="/journey"><MenuItem value="/journey">Journey</MenuItem></NextLink>
               </MenuContent>
             </MenuRoot>
           </Box>
