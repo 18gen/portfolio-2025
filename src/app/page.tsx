@@ -7,20 +7,20 @@ import {
   Heading,
   Text,
   Link,
-  HStack,
   VStack,
-  Card,
-  Badge,
-  Strong
 } from "@chakra-ui/react";
 import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button"
 import { useColorModeValue } from "@/components/ui/color-mode"
-import { Table } from "@chakra-ui/react"
 import { FaFacebookSquare } from "react-icons/fa";
 import { FaLinkedin, FaInstagram } from "react-icons/fa";
-import { Tooltip } from "@/components/ui/tooltip"
+
 import './globals.css';
+import Ongoing from "@/components/about/ongoing";
+import Bio from "@/components/about/bio";
+import Like from "@/components/about/like";
+import Resume from "@/components/about/resume";
+
 
 export default function Page() {
   const backgroundColor = useColorModeValue("whiteAlpha.800", "whiteAlpha.200");
@@ -87,76 +87,7 @@ export default function Page() {
       >
         Ongoing
       </Heading>
-      <HStack gap="3">
-        <Card.Root
-          width="260px"
-          height="200px"
-          size="md"
-          variant="subtle">
-          <Card.Body>
-            <HStack mb="3" gap="3">
-              <Avatar
-                src="ongoing/uw.svg.png"
-                name="University of Waterloo"
-              />
-              <Heading fontWeight={"md"}>
-                  3B Study Term
-              </Heading>
-            </HStack>
-            <Card.Description>
-              Bachelor’s of Computer Science, Honours with AI specialization
-            </Card.Description>
-          </Card.Body>
-          <Card.Footer>
-            <Text fontSize={"sm"}>
-              seeking{" "}
-              <Link
-                variant="underline"
-                href="/works"
-                colorPalette="cyan"
-                fontWeight={"bold"}
-              >
-                Summer Internship
-              </Link>
-            </Text>
-          </Card.Footer>
-        </Card.Root>
-        <Card.Root
-          width="260px"
-          height="200px"
-          size="md"
-          variant="subtle">
-          <Card.Body>
-            <HStack mb="3" gap="3">
-              <Avatar
-                src="works/geesehacks.jpg"
-                name="Geesehacks"
-              />
-              <Heading fontWeight={"md"}>
-                  GeeseHacks
-              </Heading>
-            </HStack>
-            <Card.Description>
-             <Strong color="fg">Director of 300+ Hackathon</Strong> at UW, secured 22k funding and 600+ applied so far
-            </Card.Description>
-          </Card.Body>
-          <Card.Footer>
-            <Text fontSize={"sm"}>
-              check out our{" "}
-              <Link
-                variant="underline"
-                href="https://geesehacks.com"
-                colorPalette="cyan"
-                fontWeight={"bold"}
-                isExternal
-              >
-                website
-              </Link>
-            </Text>
-          </Card.Footer>
-        </Card.Root>
-      </HStack>
-      
+      <Ongoing />
 
       <Box
         data-state="open"
@@ -171,30 +102,7 @@ export default function Page() {
         >
           Bio
         </Heading>
-        <Table.Root size="sm" striped>
-          <Table.Body>
-            <Table.Row>
-              <Table.Cell fontWeight={"bold"}>2003</Table.Cell>
-              <Table.Cell>Born in Aichi(愛知) & Raised in Gifu(岐阜), Japan</Table.Cell>
-            </Table.Row>
-            <Table.Row>
-              <Table.Cell fontWeight={"bold"}>2019</Table.Cell>
-              <Table.Cell>Graduted from Honjo Juninor High School (Gifu, Japan)</Table.Cell>
-            </Table.Row>
-            <Table.Row>
-              <Table.Cell fontWeight={"bold"}>2022</Table.Cell>
-              <Table.Cell>Graduted from Sequam Secondary School (Delta, BC, Canada)</Table.Cell>
-            </Table.Row>
-            <Table.Row>
-              <Table.Cell fontWeight={"bold"}>2026</Table.Cell>
-              <Table.Cell>Expecting to graduate University of Waterloo (Waterloo, ON, Canada)</Table.Cell>
-            </Table.Row>
-            <Table.Row>
-              <Table.Cell fontWeight={"bold"}>...after</Table.Cell>
-              <Table.Cell>Applying to medical school, to become a doctor in Japan</Table.Cell>
-            </Table.Row>
-          </Table.Body>
-        </Table.Root>
+        <Bio />
 
         <Heading
           py={2}
@@ -206,24 +114,8 @@ export default function Page() {
         >
           I♥
         </Heading>
-        <Text fontWeight={"md"}> Soccer,{" "}
-          <Tooltip showArrow content="🎧 Check out my Spotify playlist 🎧">
-            <Link
-            variant="underline"
-            href="https://open.spotify.com/user/31z7l5ijs2mdlx3ozkhkqajeu7gq?si=7982a1f0336b4fc7"
-            colorPalette="red"
-            fontWeight={"bold"}
-            >Music</Link>
-          </Tooltip>,{" "}
-          <Tooltip showArrow content="👓 Check out my work 👓">
-            <Link
-            variant="underline"
-            href="https://sketchfab.com/18gen"
-            colorPalette="red"
-            fontWeight={"bold"}
-            >3D modeling</Link>
-          </Tooltip>
-        </Text>
+        <Like />
+
         <Heading
           py={2}
           fontSize={{ base: "lg", md: "1xl" }}
@@ -235,13 +127,26 @@ export default function Page() {
           Contact
         </Heading>
         <VStack alignItems="flex-start" gap="1">
+          <Link href="https://www.instagram.com/ichigen3215">
           <Button size={"md"} colorPalette="cyan" variant="ghost">{<FaInstagram/>} @ichigen3215</Button>
+          </Link>
           <Button size={"md"} colorPalette="cyan" variant="ghost">{<FaFacebookSquare/>} @Ichihashi_Gen</Button>
           <Button size={"md"} colorPalette="cyan" variant="ghost">{<FaLinkedin/>} @Gen_Ichihashi</Button>
           <Text>gmail: ichihashigen@gmail.com</Text>
         </VStack>
-      </Box>
-      <Box p={"40px"}></Box>
+
+        <Heading
+          py={2}
+          fontSize={{ base: "lg", md: "1xl" }}
+          textDecoration="underline"
+          textDecorationThickness="4px"
+          textUnderlineOffset="3px"
+          textDecorationColor="gray"
+        >
+          Resume
+        </Heading>
+        <Resume />
+    </Box>
     </Container>
   );
 }
