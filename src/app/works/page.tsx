@@ -37,7 +37,7 @@ export default function Page() {
         width="100%"
         css={{ backdropFilter: "blur(10px)" }}
       >
-        I'm seeking for{" "}
+        I&apos;m seeking for{" "}
         <Text as="span" colorPalette="cyan.500" fontWeight="semibold">
           2025 Summer Internship
         </Text>
