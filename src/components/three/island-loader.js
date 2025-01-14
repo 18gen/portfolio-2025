@@ -1,5 +1,5 @@
-import { forwardRef } from 'react'
-import { Box, Spinner } from '@chakra-ui/react'
+import { forwardRef } from "react";
+import { Box, Spinner } from "@chakra-ui/react";
 
 export const IslandSpinner = () => (
   <Spinner
@@ -10,7 +10,7 @@ export const IslandSpinner = () => (
     ml="calc(0px - var(--spinner-size) / 2)"
     mt="calc(0px - var(--spinner-size))"
   />
-)
+);
 
 export const IslandContainer = forwardRef(({ children }, ref) => (
   <Box
@@ -18,21 +18,23 @@ export const IslandContainer = forwardRef(({ children }, ref) => (
     className="island"
     m="auto"
     pt={{ base: "50px", md: "30px" }}
-    mb={{ base: '-130px', md: '-180px' }}
-    w={{ base: 450, md: 650 }}
-    h={{ base: 450, md: 550 }}
+    mb={{ base: "-130px", md: "-180px" }}
+    w={{ base: "11/12", md: 650 }}
+    h={{ base: 300, md: 550 }}
     position="relative"
   >
     {children}
   </Box>
-))
+));
+
+IslandContainer.displayName = "IslandContainer";
 
 const Loader = () => {
   return (
     <IslandContainer>
       <IslandSpinner />
     </IslandContainer>
-  )
-}
+  );
+};
 
-export default Loader
+export default Loader;
