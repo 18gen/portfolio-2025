@@ -23,7 +23,7 @@ type GitHubRepo = {
 
 export default function Page() {
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
-  const cardBg = useColorModeValue("gray.50", "gray.700");
+  const backgroundColor = useColorModeValue("whiteAlpha.800", "whiteAlpha.200");
 
   useEffect(() => {
     // Fetch public repositories from your GitHub account
@@ -44,6 +44,37 @@ export default function Page() {
 
   return (
     <Container pt={14} maxW={{ base: "md", md: "3xl" }}>
+      <Box
+        borderRadius="lg"
+        p={3}
+        mb={5}
+        textAlign="center"
+        background={backgroundColor}
+        width="100%"
+        css={{ backdropFilter: "blur(10px)" }}
+      >
+        Check out my{" "}
+        <Link
+          variant="underline"
+          colorPalette="cyan"
+          fontWeight="bold"
+          href="https://devpost.com/18gen?ref_content=user-portfolio&ref_feature=portfolio&ref_medium=global-nav"
+        >
+          {" "}
+          DevPost
+        </Link>
+        {" or "}
+        <Link
+          variant="underline"
+          colorPalette="cyan"
+          fontWeight="bold"
+          href="https://protopedia.net/prototyper/ichigen3215"
+        >
+          Protopedia
+        </Link>
+        {"... 🤖"}
+      </Box>
+
       <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} gap={6}>
         <Card.Root variant="subtle" overflow="hidden">
           <video
@@ -55,43 +86,6 @@ export default function Page() {
             muted
             playsInline
           >
-            <source src="projects/chessGame.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          <Card.Body gap="2">
-            <Card.Title>Chess Game</Card.Title>
-            <Stack direction="row">
-              <Badge
-                colorPalette="blue"
-                variant={{ _dark: "outline", _light: "solid" }}
-              >
-                XQuartz
-              </Badge>
-              <Badge
-                colorPalette="red"
-                variant={{ _dark: "outline", _light: "solid" }}
-              >
-                C++
-              </Badge>
-            </Stack>
-            <Card.Description>
-              The chess game, built exclusively with C++ for CS246 group
-              project, features AI players(levels 1 to 4) and includes graphics
-              using XQuartz. *The source code is not shareable due to academic
-              policies
-            </Card.Description>
-          </Card.Body>
-        </Card.Root>
-        <Card.Root variant="subtle" overflow="hidden">
-          <video
-              width="100%"
-              height="auto"
-              style={{ objectFit: "cover" }}
-              autoPlay
-              loop
-              muted
-              playsInline
-            >
             <source src="projects/memoryLane.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
@@ -123,8 +117,8 @@ export default function Page() {
               from the exact same perspective. With Cohere API, it adds stories
               about each location&apos;s landmarks and history, enhancing the
               nostalgic journey. Users can also contribute personal snapshots
-              and tales, merging &apos;your and our&apos; memory lanes into a shared
-              narrative.
+              and tales, merging &apos;your and our&apos; memory lanes into a
+              shared narrative.
             </Card.Description>
             <Link href="https://github.com/18gen/UofTHacks2024">
               <FaGithub /> Source Code
@@ -179,27 +173,77 @@ export default function Page() {
             </Link>
           </Card.Body>
         </Card.Root>
+        <Card.Root variant="subtle" overflow="hidden">
+          <video
+            width="100%"
+            height="auto"
+            style={{ objectFit: "cover" }}
+            autoPlay
+            loop
+            muted
+            playsInline
+          >
+            <source src="projects/chessGame.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <Card.Body gap="2">
+            <Card.Title>Chess Game</Card.Title>
+            <Stack direction="row">
+              <Badge
+                colorPalette="blue"
+                variant={{ _dark: "outline", _light: "solid" }}
+              >
+                XQuartz
+              </Badge>
+              <Badge
+                colorPalette="red"
+                variant={{ _dark: "outline", _light: "solid" }}
+              >
+                C++
+              </Badge>
+            </Stack>
+            <Card.Description>
+              The chess game, built exclusively with C++ for CS246 group
+              project, features AI players(levels 1 to 4) and includes graphics
+              using XQuartz. *The source code is not shareable due to academic
+              policies
+            </Card.Description>
+          </Card.Body>
+        </Card.Root>
       </Grid>
 
-      <Heading size="lg" mb={4}>
+      <Heading size="lg" mt={4}>
         My GitHub Library
       </Heading>
       <Text mb={4}>
-        Check out my latest contributions and updates on{" "}
-        <Link href="https://github.com/18gen" color="blue.500">
-          GitHub <Box as={FaGithub} display="inline" ml={1} />
+        Check out my other projects and updates on{" "}
+        <Link
+          href="https://github.com/18gen"
+          variant="underline"
+          fontWeight="bold"
+          colorPalette="cyan"
+        >
+          <FaGithub /> GitHub
         </Link>
       </Text>
       {/* https://github.com/arifszn/gitprofile?tab=readme-ov-file */}
-      <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} gap={6}>
+      <Grid
+        templateColumns="1fr"
+        gap={6}
+        overflowX="auto"
+        display="flex"
+        flexWrap="nowrap"
+        pb={4}
+      >
         {repos.length > 0 ? (
           repos.map((repo) => (
             <Box
               key={repo.name}
               p={4}
+              minW="300px"
               borderWidth="1px"
               borderRadius="lg"
-              background={cardBg}
+              background={backgroundColor}
             >
               <Heading size="md" mb={2}>
                 <Link href={repo.html_url}>{repo.name}</Link>
