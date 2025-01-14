@@ -7,8 +7,10 @@ import {
   Stack,
   List,
   Badge,
+  Box,
+  Text,
+  Link,
 } from "@chakra-ui/react";
-
 import {
   TimelineConnector,
   TimelineContent,
@@ -18,11 +20,29 @@ import {
   TimelineTitle,
 } from "@/components/ui/timeline";
 import { Avatar } from "@/components/ui/avatar";
+import { useColorModeValue } from "@/components/ui/color-mode";
 import Resume from "@/components/about/resume";
 
 export default function Page() {
+  const backgroundColor = useColorModeValue("whiteAlpha.800", "whiteAlpha.200");
+
   return (
-    <Container pt={14} maxW={{ base: "md", md: "2xl" }}>
+    <Container pt={8} maxW={{ base: "md", md: "2xl" }}>
+      <Box
+        borderRadius="lg"
+        p={3}
+        mb={5}
+        textAlign="center"
+        background={backgroundColor}
+        width="100%"
+        css={{ backdropFilter: "blur(10px)" }}
+      >
+        I'm seeking for{" "}
+        <Text as="span" colorPalette="cyan.500" fontWeight="semibold">
+          2025 Summer Internship
+        </Text>
+        {"... 🚀"}
+      </Box>
       <Heading fontSize="2xl" mb="4">
         Experiences
       </Heading>
@@ -42,9 +62,15 @@ export default function Page() {
             <TimelineTitle fontSize="lg">
               Software Developer Intern
             </TimelineTitle>
-            <TimelineDescription fontSize="sm">
-              Medical Informatics Co., Ltd.
-            </TimelineDescription>
+            <Link href="https://homis-mics.jp">
+              <TimelineDescription
+                fontSize="sm"
+                whiteSpace={"nowrap"}
+                textOverflow="ellipsis"
+              >
+                Medical Informatics Co., Ltd.
+              </TimelineDescription>
+            </Link>
             <Stack direction="row" mt={1} mb={2}>
               <Badge variant={{ _dark: "outline", _light: "solid" }}>
                 May 2024 - Present
@@ -100,7 +126,11 @@ export default function Page() {
             <TimelineTitle fontSize="lg">
               Founder/Director of Hackathon Organization
             </TimelineTitle>
-            <TimelineDescription fontSize="sm">GeeseHacks</TimelineDescription>
+            <Link href="https://www.geesehacks.com">
+              <TimelineDescription fontSize="sm" whiteSpace={"nowrap"}>
+                GeeseHacks
+              </TimelineDescription>
+            </Link>
             <Stack direction="row" mt={1} mb={2}>
               <Badge variant={{ _dark: "outline", _light: "solid" }}>
                 January 2024 - Present
@@ -139,9 +169,11 @@ export default function Page() {
             <TimelineTitle fontSize="lg">
               System Management Intern
             </TimelineTitle>
-            <TimelineDescription fontSize="sm">
-              Medical Corporation Kagayaki
-            </TimelineDescription>
+            <Link href="https://www.sogo-zaitaku.jp">
+              <TimelineDescription fontSize="sm" whiteSpace={"nowrap"}>
+                Medical Corporation Kagayaki
+              </TimelineDescription>
+            </Link>
             <Stack direction="row" mt={1} mb={2}>
               <Badge variant={{ _dark: "outline", _light: "solid" }}>
                 July - August 2022

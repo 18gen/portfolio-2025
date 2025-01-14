@@ -1,21 +1,21 @@
-import { Heading, Text, Link, Box, HStack, Card, Strong } from "@chakra-ui/react";
+import {
+  Heading,
+  Text,
+  Link,
+  Box,
+  HStack,
+  Card,
+  Strong,
+} from "@chakra-ui/react";
 import { Avatar } from "@/components/ui/avatar";
+import NextLink from "next/link";
 
 export default function Ongoing() {
   return (
-    <Box
-      maxH="400px" // Adjust as needed for the container height
-      overflowX="auto"
-      overflowY="hidden" // Prevent vertical overflow
-    >
-      <HStack gap="3" wrap="wrap" justify="center">
+    <Box maxH="400px" overflowX="auto" overflowY="hidden" display="flex">
+      <HStack gap="3" flexWrap="nowrap" alignItems="flex-start">
         {/* Card 1 */}
-        <Card.Root
-          width="260px"
-          height="200px"
-          size="md" // Fixed size
-          variant="subtle"
-        >
+        <Card.Root width="260px" height="200px" size="md" variant="subtle">
           <Card.Body>
             <HStack mb="3" gap="3">
               <Avatar src="ongoing/uw.svg.png" name="University of Waterloo" />
@@ -24,7 +24,8 @@ export default function Ongoing() {
               </Heading>
             </HStack>
             <Card.Description fontSize="sm">
-              Bachelor’s of Computer Science, Honours with AI specialization
+              Bachelor’s of <Strong color="fg">Computer Science</Strong>,
+              Honours with AI specialization
             </Card.Description>
           </Card.Body>
           <Card.Footer>
@@ -36,19 +37,14 @@ export default function Ongoing() {
                 colorPalette="cyan"
                 fontWeight="bold"
               >
-                Summer Internship
+                <NextLink href="/works">Summer Internship</NextLink>
               </Link>
             </Text>
           </Card.Footer>
         </Card.Root>
 
         {/* Card 2 */}
-        <Card.Root
-          width="260px"
-          height="200px"
-          size="md" // Fixed size
-          variant="subtle"
-        >
+        <Card.Root width="260px" height="200px" size="md" variant="subtle">
           <Card.Body>
             <HStack mb="3" gap="3">
               <Avatar src="works/geesehacks.jpg" name="Geesehacks" />
@@ -71,6 +67,34 @@ export default function Ongoing() {
                 fontWeight="bold"
               >
                 website
+              </Link>
+            </Text>
+          </Card.Footer>
+        </Card.Root>
+
+        <Card.Root width="260px" height="200px" size="md" variant="subtle">
+          <Card.Body>
+            <HStack mb="3" gap="3">
+              <Avatar src="works/mics.jpg" name="Geesehacks" />
+              <Heading fontWeight="md" fontSize="md">
+                Software Engineer
+              </Heading>
+            </HStack>
+            <Card.Description fontSize="sm">
+              Part-time developing a tool for real-time clinic performance
+              insights and decision support.
+            </Card.Description>
+          </Card.Body>
+          <Card.Footer>
+            <Text fontSize="sm">
+              check out my{" "}
+              <Link
+                variant="underline"
+                href="/works"
+                colorPalette="cyan"
+                fontWeight="bold"
+              >
+                <NextLink href="/works">experience</NextLink>
               </Link>
             </Text>
           </Card.Footer>

@@ -6,9 +6,7 @@ export default function Bio() {
       <Table.Body>
         <Table.Row>
           <Table.Cell fontWeight={"bold"}>2003</Table.Cell>
-          <Table.Cell>
-            Born in Aichi(愛知) & Raised in Gifu(岐阜), Japan
-          </Table.Cell>
+          <Table.Cell>Born in Aichi & Raised in Gifu, Japan</Table.Cell>
         </Table.Row>
         <Table.Row>
           <Table.Cell fontWeight={"bold"}>2019</Table.Cell>
