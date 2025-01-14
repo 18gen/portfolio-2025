@@ -17,10 +17,10 @@ export const IslandContainer = forwardRef(({ children }, ref) => (
     ref={ref}
     className="island"
     m="auto"
-    pt={{ base: "50px", md: "30px" }}
-    mb={{ base: "-130px", md: "-180px" }}
-    w={{ base: "11/12", md: 650 }}
-    h={{ base: 300, md: 550 }}
+    pt={{ base: "50px", sm: "40px", md: "30px" }}
+    mb={{ base: "-100px", sm: "-120px", md: "-180px" }}
+    w={{ base: 320, sm: 450, md: 650 }}
+    h={{ base: 330, sm: 430, md: 550 }}
     position="relative"
   >
     {children}
