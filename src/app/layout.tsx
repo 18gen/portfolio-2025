@@ -1,19 +1,20 @@
-"use client"
+"use client";
 
-import { Inter } from "next/font/google"
-import Provider from "./provider"
-import Navbar from "@/components/navbar"
-import dynamic from 'next/dynamic'
-import IslandLoader from '@/components/three/island-loader'
-import Footer from '@/components/footer'
-const LazyIsland = dynamic(() => import('@/components/three/island'), {
+import Provider from "./provider";
+import Navbar from "@/components/navbar";
+import dynamic from "next/dynamic";
+import IslandLoader from "@/components/three/island-loader";
+import Footer from "@/components/footer";
+const LazyIsland = dynamic(() => import("@/components/three/island"), {
   ssr: false,
-  loading: () => <IslandLoader />
-})
+  loading: () => <IslandLoader />,
+});
 
-// const inter = Inter({ subsets: ["greek"], display: "swap" })
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html suppressHydrationWarning>
       <head />
@@ -22,9 +23,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Navbar />
           <LazyIsland />
           {children}
-          <Footer/>
+          <Footer />
         </Provider>
       </body>
     </html>
-  )
+  );
 }

@@ -1,5 +1,5 @@
-import { Object3D } from 'three';
-import { ReactThreeFiber } from '@react-three/fiber';
+import { Object3D } from "three";
+import { ReactThreeFiber } from "@react-three/fiber";
 
 declare global {
   namespace JSX {
@@ -10,4 +10,4 @@ declare global {
   }
 }
 
-declare module '*.glb';
+declare module "*.glb";

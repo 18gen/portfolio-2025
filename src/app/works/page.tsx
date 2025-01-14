@@ -1,20 +1,14 @@
-"use client"
+"use client";
 
-import React, { useRef } from "react";
+import React from "react";
 import {
-  Flex,
-  Box,
   Container,
   Heading,
   Stack,
   List,
   Badge,
-  Text,
-  Link,
-  Image,
 } from "@chakra-ui/react";
 
-import { useColorModeValue } from "@/components/ui/color-mode";
 import {
   TimelineConnector,
   TimelineContent,
@@ -24,29 +18,11 @@ import {
   TimelineTitle,
 } from "@/components/ui/timeline";
 import { Avatar } from "@/components/ui/avatar";
-import { LuCheck, LuPackage, LuShip } from "react-icons/lu";
-
+import Resume from "@/components/about/resume";
 
 export default function Page() {
-  // Refs for handling darkening of the resume preview on hover
-  const imageENRef = useRef<HTMLImageElement>(null);
-  const imageJPRef = useRef<HTMLImageElement>(null);
-
-  const handleMouseEnter = (ref: React.RefObject<HTMLImageElement>) => {
-    if (ref.current) {
-      ref.current.style.filter = "brightness(60%)";
-    }
-  };
-
-  const handleMouseLeave = (ref: React.RefObject<HTMLImageElement>) => {
-    if (ref.current) {
-      ref.current.style.filter = "brightness(100%)";
-    }
-  };
-
   return (
-    <Container pt={14} maxW={{ base: "md", md: "xl" }}>
-      {/* Experiences Section */}
+    <Container pt={14} maxW={{ base: "md", md: "2xl" }}>
       <Heading fontSize="2xl" mb="4">
         Experiences
       </Heading>
@@ -160,7 +136,9 @@ export default function Page() {
             />
           </TimelineConnector>
           <TimelineContent>
-            <TimelineTitle fontSize="lg">System Management Intern</TimelineTitle>
+            <TimelineTitle fontSize="lg">
+              System Management Intern
+            </TimelineTitle>
             <TimelineDescription fontSize="sm">
               Medical Corporation Kagayaki
             </TimelineDescription>
@@ -193,62 +171,10 @@ export default function Page() {
         </TimelineItem>
       </TimelineRoot>
 
-      {/* Resume Section */}
       <Heading fontSize="2xl" mb="4">
         Resume
       </Heading>
-      <Flex gap={2} direction={{ base: "column", md: "row" }}>
-        <Box mb="6">
-          <Text fontWeight="semibold" mb="2">
-            English
-          </Text>
-          <Box>
-            <Image
-              ref={imageENRef}
-              src={"works/Resume2024_ENG.jpg"}
-              alt="Resume Preview English"
-              mb="2"
-              borderRadius="md"
-            />
-            <Link
-              onMouseEnter={() => handleMouseEnter(imageENRef)}
-              onMouseLeave={() => handleMouseLeave(imageENRef)}
-              href="https://drive.google.com/file/d/1srngRaqkvFnD71EGfBTnZoftVcfv3kDI/view?usp=sharing"
-              color="blue.400"
-              textDecoration="underline"
-              fontWeight="medium"
-            >
-              Open PDF
-            </Link>
-          </Box>
-        </Box>
-
-        <Box mb="6">
-          <Text fontWeight="semibold" mb="2">
-            Japanese
-          </Text>
-          <Box>
-            <Image
-              ref={imageJPRef}
-              src={"works/Resume2024_ENG.jpg"}
-              alt="Resume Preview Japanese"
-              mb="2"
-              borderRadius="md"
-            />
-            <Link
-              onMouseEnter={() => handleMouseEnter(imageJPRef)}
-              onMouseLeave={() => handleMouseLeave(imageJPRef)}
-              href="https://drive.google.com/drive/folders/1_gwuFC16BVosXXKsgmacPWfzTrud__4_?usp=sharing"
-              isExternal
-              color="blue.400"
-              textDecoration="underline"
-              fontWeight="medium"
-            >
-              Open PDF
-            </Link>
-          </Box>
-        </Box>
-      </Flex>
+      <Resume />
     </Container>
   );
 }

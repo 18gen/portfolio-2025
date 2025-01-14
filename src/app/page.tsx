@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import {
   Box,
@@ -10,23 +10,22 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { Avatar } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button"
-import { useColorModeValue } from "@/components/ui/color-mode"
+import { Button } from "@/components/ui/button";
+import { useColorModeValue } from "@/components/ui/color-mode";
 import { FaFacebookSquare } from "react-icons/fa";
 import { FaLinkedin, FaInstagram } from "react-icons/fa";
 
-import './globals.css';
+import "./globals.css";
 import Ongoing from "@/components/about/ongoing";
 import Bio from "@/components/about/bio";
 import Like from "@/components/about/like";
 import Resume from "@/components/about/resume";
 
-
 export default function Page() {
   const backgroundColor = useColorModeValue("whiteAlpha.800", "whiteAlpha.200");
   const headingClassName = useColorModeValue("text-shadow-lg", "");
   const textClassName = useColorModeValue("text-shadow-sm", "");
-  
+
   return (
     <Container pt={8} maxW={{ base: "md", md: "2xl" }}>
       <Box>
@@ -37,7 +36,7 @@ export default function Page() {
           textAlign="center"
           background={backgroundColor}
           width="100%"
-          css={{ backdropFilter: 'blur(10px)' }}
+          css={{ backdropFilter: "blur(10px)" }}
         >
           Hey👋, I study Computer Science at{" "}
           <Text as="span" display={{ base: "inline", md: "none" }}>
@@ -50,19 +49,21 @@ export default function Page() {
 
         <Flex
           direction={{ base: "column", md: "row" }}
-          alignItems={{ md:"center" }}
-          justifyContent={{ md:"space-between"}}
+          alignItems={{ md: "center" }}
+          justifyContent={{ md: "space-between" }}
         >
           <Box>
-          <Heading
-            fontSize={{ base: "3xl", md: "4xl" }}
-            fontWeight="bold"
-            lineHeight="short"
-            className={headingClassName}
-          >
-            Gen Ichihashi
-          </Heading>
-          <Text className={textClassName}>Full-Stack Developer based in Japan</Text>
+            <Heading
+              fontSize={{ base: "3xl", md: "4xl" }}
+              fontWeight="bold"
+              lineHeight="short"
+              className={headingClassName}
+            >
+              Gen Ichihashi
+            </Heading>
+            <Text className={textClassName}>
+              Full-Stack Developer based in Japan
+            </Text>
           </Box>
           <Box mt={{ base: 4, md: 0 }} textAlign="center">
             <Avatar
@@ -89,9 +90,7 @@ export default function Page() {
       </Heading>
       <Ongoing />
 
-      <Box
-        data-state="open"
-        mt={{base: "10px", md: "15px"}}>
+      <Box data-state="open" mt={{ base: "10px", md: "15px" }}>
         <Heading
           py={2}
           fontSize={{ base: "lg", md: "1xl" }}
@@ -127,11 +126,21 @@ export default function Page() {
           Contact
         </Heading>
         <VStack alignItems="flex-start" gap="1">
-          <Link href="https://www.instagram.com/ichigen3215">
-          <Button size={"md"} colorPalette="cyan" variant="ghost">{<FaInstagram/>} @ichigen3215</Button>
+          <Link href="https://www.linkedin.com/in/gen-ichihashi">
+            <Button size={"md"} colorPalette="cyan" variant="ghost">
+              {<FaLinkedin />} @Gen_Ichihashi
+            </Button>
           </Link>
-          <Button size={"md"} colorPalette="cyan" variant="ghost">{<FaFacebookSquare/>} @Ichihashi_Gen</Button>
-          <Button size={"md"} colorPalette="cyan" variant="ghost">{<FaLinkedin/>} @Gen_Ichihashi</Button>
+          <Link href="https://www.facebook.com/ichihashigen">
+            <Button size={"md"} colorPalette="cyan" variant="ghost">
+              {<FaFacebookSquare />} @Ichihashi_Gen
+            </Button>
+          </Link>
+          <Link href="https://www.instagram.com/ichigen3215">
+            <Button size={"md"} colorPalette="cyan" variant="ghost">
+              {<FaInstagram />} @ichigen3215
+            </Button>
+          </Link>
           <Text>gmail: ichihashigen@gmail.com</Text>
         </VStack>
 
@@ -146,7 +155,7 @@ export default function Page() {
           Resume
         </Heading>
         <Resume />
-    </Box>
+      </Box>
     </Container>
   );
 }

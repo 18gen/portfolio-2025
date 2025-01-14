@@ -6,19 +6,32 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import * as React from "react";
+import { useColorModeValue } from "./color-mode";
 
 interface ButtonLoadingProps {
   loading?: boolean;
   loadingText?: React.ReactNode;
 }
 
-export interface ButtonProps extends ChakraButtonProps, ButtonLoadingProps {}
+export interface ButtonProps extends ChakraButtonProps, ButtonLoadingProps {
+  selected?: boolean;
+}
 
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+export const ButtonWithState = React.forwardRef<HTMLButtonElement, ButtonProps>(
   function Button(props, ref) {
-    const { loading, disabled, loadingText, children, ...rest } = props;
+    const bgColor = useColorModeValue("#1B202B", "white");
+    const textColour = useColorModeValue("white", "black");
+    const { loading, disabled, loadingText, children, selected, ...rest } =
+      props;
+
     return (
-      <ChakraButton disabled={loading || disabled} ref={ref} {...rest}>
+      <ChakraButton
+        disabled={loading || disabled}
+        ref={ref}
+        backgroundColor={selected ? bgColor : undefined}
+        color={selected ? textColour : undefined}
+        {...rest}
+      >
         {loading && !loadingText ? (
           <>
             <AbsoluteCenter display="inline-flex">
