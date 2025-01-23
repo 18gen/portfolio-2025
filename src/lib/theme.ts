@@ -25,8 +25,18 @@ const config = defineConfig({
     },
     tokens: {
       fonts: {
-        heading: { value: "BlinkMacSystemFont" },
-        body: { value: "BlinkMacSystemFont" },
+        heading: {
+          value: "'Inter', 'Roboto', 'M PLUS Rounded 1c', 'BlinkMacSystemFont', 'Helvetica Neue', sans-serif",
+        },
+        body: {
+          value: "'Inter', 'Roboto', 'M PLUS Rounded 1c', 'BlinkMacSystemFont', 'Helvetica Neue', sans-serif",
+        },
+        mono: {
+          value: "'Courier New', 'Courier', monospace",
+        },
+        decorative: {
+          value: "'Pacifico', 'Dancing Script', cursive",
+        },
       },
       fontSizes: {
         heading: { value: "5xl" },
