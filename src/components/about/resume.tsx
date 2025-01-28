@@ -4,7 +4,7 @@ import {
   Text,
   Image,
   LinkBox,
-  LinkOverlay,
+  // LinkOverlay,
   Button,
   Link,
 } from "@chakra-ui/react";
