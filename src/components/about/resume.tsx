@@ -17,12 +17,12 @@ export default function Resume() {
         </Text>
         <Box position="relative">
           <Image
-            src="works/Resume2024_ENG.jpg"
+            src="works/Resume_2025.jpg"
             alt="Resume Preview English"
             borderRadius="md"
             h={{ md: "400px" }}
           />
-          <LinkOverlay href="https://drive.google.com/file/d/1srngRaqkvFnD71EGfBTnZoftVcfv3kDI/view?usp=sharing" />
+          <LinkOverlay href="https://drive.google.com/file/d/1n2inKycKhVcyljAyL3CyIsnsW9F2K8Xu/view?usp=sharing" />
           <Button
             position="absolute"
             top="50%"
