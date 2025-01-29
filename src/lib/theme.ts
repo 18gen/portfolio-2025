@@ -26,10 +26,12 @@ const config = defineConfig({
     tokens: {
       fonts: {
         heading: {
-          value: "'Inter', 'Roboto', 'M PLUS Rounded 1c', 'BlinkMacSystemFont', 'Helvetica Neue', sans-serif",
+          value:
+            "'Inter', 'Roboto', 'M PLUS Rounded 1c', 'BlinkMacSystemFont', 'Helvetica Neue', sans-serif",
         },
         body: {
-          value: "'Inter', 'Roboto', 'M PLUS Rounded 1c', 'BlinkMacSystemFont', 'Helvetica Neue', sans-serif",
+          value:
+            "'Inter', 'Roboto', 'M PLUS Rounded 1c', 'BlinkMacSystemFont', 'Helvetica Neue', sans-serif",
         },
         mono: {
           value: "'Courier New', 'Courier', monospace",
