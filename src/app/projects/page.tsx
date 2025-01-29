@@ -76,7 +76,7 @@ export default function Page() {
       </Box>
 
       <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} gap={6}>
-      <Card.Root variant="subtle" overflow="hidden">
+        <Card.Root variant="subtle" overflow="hidden">
           <video
             width="100%"
             height="auto"
@@ -86,7 +86,7 @@ export default function Page() {
             muted
             playsInline
           >
-            <source src="projects/memoryLane.mp4" type="video/mp4" />
+            <source src="projects/metaConnect.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           <Card.Body gap="2">
@@ -96,31 +96,28 @@ export default function Page() {
                 colorPalette="blue"
                 variant={{ _dark: "outline", _light: "solid" }}
               >
-                HTML/CSS
+                Next.js
               </Badge>
               <Badge
                 colorPalette="red"
                 variant={{ _dark: "outline", _light: "solid" }}
               >
-                django
+                Nebius
               </Badge>
               <Badge
                 colorPalette="green"
                 variant={{ _dark: "outline", _light: "solid" }}
               >
-                googleMap/Cohere API
+                Llama 3.2
               </Badge>
             </Stack>
             <Card.Description>
-              Crafted during UofTHack11 with a theme of Nostalgia, Y+Our Memory
-              Lane uses Google Map API to showcase past and present street views
-              from the exact same perspective. With Cohere API, it adds stories
-              about each location&apos;s landmarks and history, enhancing the
-              nostalgic journey. Users can also contribute personal snapshots
-              and tales, merging &apos;your and our&apos; memory lanes into a
-              shared narrative.
+              Platform where <strong>AI agents</strong> copy your communication
+              style and chat on your behalf with other AI agents. They randomly
+              match you, measure compatibility, and even suggest what to say
+              next—making it easy to start talking to new people.
             </Card.Description>
-            <Link href="https://github.com/18gen/UofTHacks2024">
+            <Link href="https://github.com/Ri-Hong/Meta-Connect">
               <FaGithub /> Source Code
             </Link>
           </Card.Body>
@@ -136,7 +133,7 @@ export default function Page() {
             muted
             playsInline
           >
-            <source src="projects/memoryLane.mp4" type="video/mp4" />
+            <source src="projects/liveStory.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           <Card.Body gap="2">
@@ -162,9 +159,10 @@ export default function Page() {
               </Badge>
             </Stack>
             <Card.Description>
-              An interactive storybook where characters come to life, 
-              letting children engage with them in real time to explore emotions and ask questions.
-              
+              An <strong>interactive storybook</strong> where characters come to
+              life, letting children engage with them in real time to explore
+              emotions and ask questions. With AI voice-to-voice pipelines,
+              readers can feel the emotion of their characters.
             </Card.Description>
             <Link href="https://github.com/pranavbedi/LiveStory">
               <FaGithub /> Source Code
@@ -208,7 +206,13 @@ export default function Page() {
               </Badge>
             </Stack>
             <Card.Description>
-              
+              Crafted during <strong>UofTHack11</strong> with a theme of{" "}
+              <strong>Nostalgia</strong>, it showcases street view in time lapse
+              at the exact same perspective. It also tells stories about the
+              location&apos;s landmarks and history, enhancing the nostalgic
+              journey. Users can also contribute personal snapshots and tales,
+              merging &apos;your and our&apos; memory lanes into a shared
+              narrative.
             </Card.Description>
             <Link href="https://github.com/18gen/UofTHacks2024">
               <FaGithub /> Source Code
@@ -252,11 +256,12 @@ export default function Page() {
               </Badge>
             </Stack>
             <Card.Description>
-              Cooking assistant website that helps reduce food waste by tracking
-              the expiration dates of items and suggesting recipes using those
-              ingredients. Integrating ChatGPT API for cooking instructions and
-              DALL-E 3 for visualizing the finished dish, it transforms leftover
-              management into a creative and sustainable culinary experience.
+              Cooking assistant web-app built at{" "}
+              <strong>Hack the Change</strong> that helps reduce food waste, by
+              tracking the expiry dates of groceries and suggesting recipes
+              using those ingredients. Based on the recipes, it also generates a
+              resulting image and transforms leftover management into a creative
+              and sustainable culinary experience.
             </Card.Description>
             <Link href="https://github.com/18gen/receipt-generator">
               <FaGithub /> Source Code

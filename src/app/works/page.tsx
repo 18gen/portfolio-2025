@@ -148,7 +148,7 @@ export default function Page() {
                 hackathon on Jan. 25-26, 2025
               </List.Item>
               <List.Item>
-                Scured $17k from industry giants such as Google, SunLife, and
+                Scured $22k from industry giants such as Google, SunLife, and
                 CS-CAN
               </List.Item>
             </List.Root>
