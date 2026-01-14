@@ -67,12 +67,14 @@ export default function Navbar() {
               Journey
             </ButtonWithState>
           </NextLink>
-          <Link href="https://github.com/18gen">
-            <FaGithub /> GitHub
-          </Link>
         </Stack>
 
         <Box display={"flex"}>
+          <Box className="pr-2" display={{ base: "none", md: "flex" }}>
+            <Link href="https://github.com/18gen">
+              <FaGithub /> GitHub
+            </Link>
+          </Box>
           <ColorModeButton />
           <MenuRoot closeOnSelect={true}>
             <MenuTrigger asChild display={{ base: "flex", md: "none" }} ml={2}>
@@ -93,6 +95,9 @@ export default function Navbar() {
               <NextLink href="/journey">
                 <MenuItem value="/journey">Journey</MenuItem>
               </NextLink>
+              <Link href="https://github.com/18gen">
+                <FaGithub /> GitHub
+              </Link>
             </MenuContent>
           </MenuRoot>
         </Box>
