@@ -29,7 +29,7 @@ export default function Bio() {
         <Table.Row>
           <Table.Cell fontWeight={"bold"}>...after</Table.Cell>
           <Table.Cell>
-            Applying to medical school, to become a doctor in Japan
+            TBD
           </Table.Cell>
         </Table.Row>
       </Table.Body>

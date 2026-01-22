@@ -1,9 +1,11 @@
-export default {
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  output: "export",
   experimental: {
     optimizePackageImports: ["@chakra-ui/react"],
   },
+  transpilePackages: ["three"],
 };
 
-module.exports = {
-  output: "export",
-};
+export default nextConfig;

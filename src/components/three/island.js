@@ -1,20 +1,41 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { loadGLTFModel } from "../../lib/model";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 import { IslandSpinner, IslandContainer } from "./island-loader";
 
 function easeOutCirc(x) {
   return Math.sqrt(1 - Math.pow(x - 1, 4));
 }
 
+function loadGLTFModel(scene, glbPath) {
+  return new Promise((resolve, reject) => {
+    const draco = new DRACOLoader();
+    draco.setDecoderPath("https://www.gstatic.com/draco/v1/decoders/");
+
+    const loader = new GLTFLoader();
+    loader.setDRACOLoader(draco);
+
+    loader.load(
+      glbPath,
+      (gltf) => {
+        const obj = gltf.scene;
+        obj.name = "island";
+        obj.position.set(0, 0, 0);
+        scene.add(obj);
+        resolve(obj);
+      },
+      undefined,
+      reject
+    );
+  });
+}
+
 const Island = () => {
   const refContainer = useRef();
   const [loading, setLoading] = useState(true);
   const refRenderer = useRef();
-  const urlIslandGLB =
-    (process.env.NODE_ENV === "production" ? "https://genichihashi.me" : "") +
-    "/island.glb";
 
   const handleWindowResize = useCallback(() => {
     const { current: renderer } = refRenderer;
@@ -33,27 +54,25 @@ const Island = () => {
     const scW = container.clientWidth;
     const scH = container.clientHeight;
 
-    // Renderer
     const renderer = new THREE.WebGLRenderer({
       antialias: true,
       alpha: true,
+      powerPreference: "high-performance",
     });
 
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(scW, scH);
-    renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
     container.appendChild(renderer.domElement);
     refRenderer.current = renderer;
 
-    // Scene
     const scene = new THREE.Scene();
 
-    // Target and camera setup
     const target = new THREE.Vector3(1, 1, 0);
     const initialCameraPosition = new THREE.Vector3(
       Math.sin(0.2 * Math.PI),
       Math.sin(0.2 * Math.PI),
-      30 * Math.cos(0.2 * Math.PI),
+      30 * Math.cos(0.2 * Math.PI)
     );
     const scale = scH * 0.005 + 8;
     const camera = new THREE.OrthographicCamera(
@@ -61,32 +80,36 @@ const Island = () => {
       scale,
       scale,
       -scale,
-      0.01,
-      5000,
+      0.1,
+      100
     );
     camera.position.copy(initialCameraPosition);
     camera.lookAt(target);
 
-    // LIGHTING SETUP
-    // 1) Hemisphere Light (Sky and Ground Illumination)
-    const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.2);
-    scene.add(hemisphereLight);
+    // Ambient lighting for overall illumination
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+    scene.add(ambientLight);
 
-    // 2) Spot Light
-    const spotLight = new THREE.SpotLight(0xffffff, 1050);
+    // Main spotlight for dramatic lighting (matches original)
+    const spotLight = new THREE.SpotLight(0xffffff, 900);
     spotLight.position.set(3, 11, 9);
+    spotLight.angle = Math.PI / 4;
+    spotLight.penumbra = 0.5;
     scene.add(spotLight);
 
-    // CONTROLS
+    // Fill light from opposite side
+    const fillLight = new THREE.DirectionalLight(0xffffff, 0.3);
+    fillLight.position.set(-5, 5, -5);
+    scene.add(fillLight);
+
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.autoRotate = true;
+    controls.autoRotateSpeed = 0.5;
     controls.target = target;
+    controls.enableZoom = false;
+    controls.enablePan = false;
 
-    // Load model
-    loadGLTFModel(scene, urlIslandGLB, {
-      receiveShadow: true, // make it true
-      castShadow: true,
-    }).then(() => {
+    loadGLTFModel(scene, "/island.glb").then(() => {
       animate();
       setLoading(false);
     });
@@ -98,7 +121,6 @@ const Island = () => {
       frame = frame <= 100 ? frame + 1 : frame;
 
       if (frame <= 100) {
-        frame += 1;
         const rotSpeed = -easeOutCirc(frame / 120) * Math.PI * 10;
         camera.position.y = 5;
         camera.position.x =
@@ -119,7 +141,7 @@ const Island = () => {
       renderer.domElement.remove();
       renderer.dispose();
     };
-  }, [urlIslandGLB]);
+  }, []);
 
   useEffect(() => {
     window.addEventListener("resize", handleWindowResize, false);

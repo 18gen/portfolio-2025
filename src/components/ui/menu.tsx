@@ -101,12 +101,8 @@ export const MenuTriggerItem = React.forwardRef<
 
 export const MenuRadioItemGroup = ChakraMenu.RadioItemGroup;
 export const MenuContextTrigger = ChakraMenu.ContextTrigger;
+export const MenuRoot = ChakraMenu.Root;
 export const MenuSeparator = ChakraMenu.Separator;
-
-export const MenuRoot = (props: ChakraMenu.RootProps) => {
-  const id = React.useId();
-  return <ChakraMenu.Root ids={{ trigger: id }} {...props} />;
-};
 
 export const MenuItem = ChakraMenu.Item;
 export const MenuItemText = ChakraMenu.ItemText;

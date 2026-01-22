@@ -62,7 +62,7 @@ export default function Page() {
               Gen Ichihashi
             </Heading>
             <Text className={textClassName}>
-              Full-Stack Developer based in Japan
+              Full-Stack Developer based in Canada/Japan
             </Text>
           </Box>
           <Box mt={{ base: 4, md: 0 }} textAlign="center">
