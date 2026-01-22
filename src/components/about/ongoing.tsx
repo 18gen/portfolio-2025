@@ -33,9 +33,9 @@ export default function Ongoing() {
               seeking{" "}
               <Link
                 variant="underline"
-                href="/works"
                 colorPalette="cyan"
                 fontWeight="bold"
+                asChild
               >
                 <NextLink href="/works">Summer Internship</NextLink>
               </Link>
@@ -90,9 +90,9 @@ export default function Ongoing() {
               check out my{" "}
               <Link
                 variant="underline"
-                href="/works"
                 colorPalette="cyan"
                 fontWeight="bold"
+                asChild
               >
                 <NextLink href="/works">experience</NextLink>
               </Link>

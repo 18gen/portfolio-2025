@@ -19,8 +19,9 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
   function Avatar(props, ref) {
     const { name, src, srcSet, loading, icon, fallback, children, ...rest } =
       props;
+    const id = React.useId();
     return (
-      <ChakraAvatar.Root ref={ref} {...rest}>
+      <ChakraAvatar.Root ref={ref} ids={{ root: id }} {...rest}>
         <AvatarFallback name={name} icon={icon}>
           {fallback}
         </AvatarFallback>

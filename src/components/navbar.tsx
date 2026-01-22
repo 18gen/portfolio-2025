@@ -70,7 +70,7 @@ export default function Navbar() {
         </Stack>
 
         <Box display={"flex"}>
-          <Box className="pr-2" display={{ base: "none", md: "flex" }}>
+          <Box pr={5} display={{ base: "none", md: "flex" }} alignItems="center">
             <Link href="https://github.com/18gen">
               <FaGithub /> GitHub
             </Link>

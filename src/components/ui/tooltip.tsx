@@ -1,3 +1,5 @@
+"use client";
+
 import { Tooltip as ChakraTooltip, Portal } from "@chakra-ui/react";
 import * as React from "react";
 
@@ -23,10 +25,12 @@ export const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
       ...rest
     } = props;
 
+    const id = React.useId();
+
     if (disabled) return children;
 
     return (
-      <ChakraTooltip.Root {...rest}>
+      <ChakraTooltip.Root ids={{ trigger: id }} {...rest}>
         <ChakraTooltip.Trigger asChild>{children}</ChakraTooltip.Trigger>
         <Portal disabled={!portalled} container={portalRef}>
           <ChakraTooltip.Positioner>
