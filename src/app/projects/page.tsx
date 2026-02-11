@@ -75,6 +75,7 @@ export default function Page() {
         {projects.map((project) => (
           <Card.Root key={project.id} variant="subtle" overflow="hidden">
             <video
+              aria-label={`${project.title} demo`}
               width="100%"
               height="auto"
               style={{ objectFit: "cover" }}

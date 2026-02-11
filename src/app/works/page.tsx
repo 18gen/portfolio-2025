@@ -45,7 +45,7 @@ export default function Page() {
                 outlineWidth="1px"
                 outlineColor="white"
                 outlineStyle="solid"
-                name={work.id}
+                name={work.company}
                 src={work.image}
               />
             </TimelineConnector>
