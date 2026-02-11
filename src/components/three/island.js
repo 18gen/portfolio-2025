@@ -1,14 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import {
-  WebGLRenderer,
-  Scene,
-  Vector3,
-  OrthographicCamera,
-  AmbientLight,
-  SpotLight,
-  DirectionalLight,
-  SRGBColorSpace,
-} from "three";
+import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
@@ -63,7 +54,7 @@ const Island = () => {
     const scW = container.clientWidth;
     const scH = container.clientHeight;
 
-    const renderer = new WebGLRenderer({
+    const renderer = new THREE.WebGLRenderer({
       antialias: true,
       alpha: true,
       powerPreference: "high-performance",
@@ -71,20 +62,20 @@ const Island = () => {
 
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(scW, scH);
-    renderer.outputColorSpace = SRGBColorSpace;
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
     container.appendChild(renderer.domElement);
     refRenderer.current = renderer;
 
-    const scene = new Scene();
+    const scene = new THREE.Scene();
 
-    const target = new Vector3(1, 1, 0);
-    const initialCameraPosition = new Vector3(
+    const target = new THREE.Vector3(1, 1, 0);
+    const initialCameraPosition = new THREE.Vector3(
       Math.sin(0.2 * Math.PI),
       Math.sin(0.2 * Math.PI),
       30 * Math.cos(0.2 * Math.PI)
     );
     const scale = scH * 0.005 + 8;
-    const camera = new OrthographicCamera(
+    const camera = new THREE.OrthographicCamera(
       -scale,
       scale,
       scale,
@@ -96,18 +87,18 @@ const Island = () => {
     camera.lookAt(target);
 
     // Ambient lighting for overall illumination
-    const ambientLight = new AmbientLight(0xffffff, 0.4);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
     scene.add(ambientLight);
 
     // Main spotlight for dramatic lighting (matches original)
-    const spotLight = new SpotLight(0xffffff, 900);
+    const spotLight = new THREE.SpotLight(0xffffff, 900);
     spotLight.position.set(3, 11, 9);
     spotLight.angle = Math.PI / 4;
     spotLight.penumbra = 0.5;
     scene.add(spotLight);
 
     // Fill light from opposite side
-    const fillLight = new DirectionalLight(0xffffff, 0.3);
+    const fillLight = new THREE.DirectionalLight(0xffffff, 0.3);
     fillLight.position.set(-5, 5, -5);
     scene.add(fillLight);
 
@@ -147,21 +138,6 @@ const Island = () => {
 
     return () => {
       cancelAnimationFrame(req);
-      if (controls.dispose) controls.dispose();
-      scene.traverse((object) => {
-        if (object.geometry) object.geometry.dispose();
-        if (object.material) {
-          if (Array.isArray(object.material)) {
-            object.material.forEach((mat) => {
-              if (mat.map) mat.map.dispose();
-              mat.dispose();
-            });
-          } else {
-            if (object.material.map) object.material.map.dispose();
-            object.material.dispose();
-          }
-        }
-      });
       renderer.domElement.remove();
       renderer.dispose();
     };

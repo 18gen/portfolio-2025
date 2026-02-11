@@ -1,4 +1,4 @@
-import { Box, Heading } from "@chakra-ui/react";
+import { Heading } from "@chakra-ui/react";
 
 export default function SectionHeading({
   children,
@@ -6,18 +6,15 @@ export default function SectionHeading({
   children: React.ReactNode;
 }) {
   return (
-    <>
-      <Heading py={2} fontSize={{ base: "lg", md: "xl" }}>
-        {children}
-      </Heading>
-      <Box
-        height="3px"
-        width="40px"
-        bg="cyan.500"
-        borderRadius="full"
-        mt={1}
-        mb={2}
-      />
-    </>
+    <Heading
+      py={2}
+      fontSize={{ base: "lg", md: "xl" }}
+      textDecoration="underline"
+      textDecorationThickness="4px"
+      textUnderlineOffset="3px"
+      textDecorationColor="gray"
+    >
+      {children}
+    </Heading>
   );
 }

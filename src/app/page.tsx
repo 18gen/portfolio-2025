@@ -1,7 +1,5 @@
 "use client";
 
-import dynamic from "next/dynamic";
-import IslandLoader from "@/components/three/island-loader";
 import {
   Box,
   Container,
@@ -9,10 +7,10 @@ import {
   Heading,
   Text,
   Link,
-  HStack,
-  IconButton,
+  VStack,
 } from "@chakra-ui/react";
 import { Avatar } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import { useColorModeValue } from "@/components/ui/color-mode";
 import { FaFacebookSquare, FaLinkedin, FaInstagram, FaEnvelope } from "react-icons/fa";
 import Ongoing from "@/components/about/ongoing";
@@ -23,20 +21,13 @@ import Resume from "@/components/about/resume";
 import PageBanner from "@/components/page-banner";
 import SectionHeading from "@/components/section-heading";
 
-const LazyIsland = dynamic(() => import("@/components/three/island"), {
-  ssr: false,
-  loading: () => <IslandLoader />,
-});
-
 export default function Page() {
   const headingClassName = useColorModeValue("text-shadow-lg", "");
   const textClassName = useColorModeValue("text-shadow-sm", "");
 
   return (
-    <>
-      <LazyIsland />
-      <Container pt={8} maxW={{ base: "md", md: "2xl" }} className="page-fade-in">
-        <Box>
+    <Container pt={8} maxW={{ base: "md", md: "2xl" }}>
+      <Box>
         <PageBanner>
           Hey👋, I study Computer Science at{" "}
           <Text as="span" display={{ base: "inline", md: "none" }}>
@@ -90,7 +81,7 @@ export default function Page() {
         <Like />
 
         <SectionHeading>Contact</SectionHeading>
-        <HStack gap={3}>
+        <VStack alignItems="flex-start" gap="1">
           {profile.contacts.map((contact) => {
             const icons: Record<string, React.ReactNode> = {
               linkedin: <FaLinkedin />,
@@ -104,23 +95,17 @@ export default function Page() {
                 href={contact.url}
                 aria-label={contact.platform}
               >
-                <IconButton
-                  aria-label={contact.platform}
-                  variant="ghost"
-                  colorPalette="cyan"
-                  size="md"
-                >
-                  {icons[contact.platform]}
-                </IconButton>
+                <Button size="md" colorPalette="cyan" variant="ghost">
+                  {icons[contact.platform]} {contact.label}
+                </Button>
               </Link>
             );
           })}
-        </HStack>
+        </VStack>
 
         <SectionHeading>Resume</SectionHeading>
         <Resume />
       </Box>
-      </Container>
-    </>
+    </Container>
   );
 }

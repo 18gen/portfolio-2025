@@ -27,14 +27,17 @@ const config = defineConfig({
       fonts: {
         heading: {
           value:
-            "'M PLUS Rounded 1c', system-ui, -apple-system, 'Helvetica Neue', sans-serif",
+            "'Inter', 'Roboto', 'M PLUS Rounded 1c', 'BlinkMacSystemFont', 'Helvetica Neue', sans-serif",
         },
         body: {
           value:
-            "'M PLUS Rounded 1c', system-ui, -apple-system, 'Helvetica Neue', sans-serif",
+            "'Inter', 'Roboto', 'M PLUS Rounded 1c', 'BlinkMacSystemFont', 'Helvetica Neue', sans-serif",
         },
         mono: {
           value: "'Courier New', 'Courier', monospace",
+        },
+        decorative: {
+          value: "'Pacifico', 'Dancing Script', cursive",
         },
       },
       fontSizes: {

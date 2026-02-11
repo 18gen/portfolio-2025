@@ -62,7 +62,6 @@ export default function Navbar() {
                 variant="ghost"
                 backgroundColor={path === item.href ? selectedBg : undefined}
                 color={path === item.href ? selectedColor : undefined}
-                transition="background-color 0.2s ease, color 0.2s ease"
               >
                 {item.label}
               </Button>
