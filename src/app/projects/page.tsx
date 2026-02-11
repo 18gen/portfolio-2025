@@ -28,12 +28,21 @@ type GitHubRepo = {
 
 export default function Page() {
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
+  const [repoError, setRepoError] = useState(false);
   const backgroundColor = useColorModeValue("whiteAlpha.800", "whiteAlpha.200");
 
   useEffect(() => {
-    fetch(`https://api.github.com/users/${profile.githubUsername}/repos`)
+    const controller = new AbortController();
+    fetch(
+      `https://api.github.com/users/${profile.githubUsername}/repos`,
+      { signal: controller.signal },
+    )
       .then((response) => response.json())
       .then((data) => {
+        if (!Array.isArray(data)) {
+          setRepoError(true);
+          return;
+        }
         const sortedRepos = data
           .sort(
             (a: GitHubRepo, b: GitHubRepo) =>
@@ -43,7 +52,12 @@ export default function Page() {
           .slice(0, 5);
         setRepos(sortedRepos);
       })
-      .catch((error) => console.error("Error fetching GitHub data:", error));
+      .catch((error) => {
+        if (error.name !== "AbortError") {
+          setRepoError(true);
+        }
+      });
+    return () => controller.abort();
   }, []);
 
   return (
@@ -126,7 +140,9 @@ export default function Page() {
         </Link>
       </Text>
       <Flex gap={6} overflowX="auto" flexWrap="nowrap" pb={4}>
-        {repos.length > 0 ? (
+        {repoError ? (
+          <Text>Could not load repositories.</Text>
+        ) : repos.length > 0 ? (
           repos.map((repo) => (
             <Box
               key={repo.name}

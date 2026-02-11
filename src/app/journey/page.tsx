@@ -1,22 +1,10 @@
 "use client";
-import React, { useEffect } from "react";
+
+import React from "react";
+import Script from "next/script";
 import { Container } from "@chakra-ui/react";
 
 export default function Page() {
-  useEffect(() => {
-    // Dynamically add the script tag
-    const script = document.createElement("script");
-    script.src = "https://note.com/scripts/embed.js";
-    script.async = true;
-    script.charset = "utf-8";
-    document.body.appendChild(script);
-
-    // Cleanup the script on component unmount
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
   return (
     <Container pt={14} maxW={{ base: "md", md: "xl" }}>
       <iframe
@@ -35,6 +23,10 @@ export default function Page() {
         }}
         height="400"
       ></iframe>
+      <Script
+        src="https://note.com/scripts/embed.js"
+        strategy="lazyOnload"
+      />
     </Container>
   );
 }
