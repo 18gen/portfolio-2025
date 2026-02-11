@@ -2,11 +2,17 @@
 
 import React from "react";
 import Script from "next/script";
-import { Container } from "@chakra-ui/react";
+import { Container, Heading, Text } from "@chakra-ui/react";
 
 export default function Page() {
   return (
-    <Container pt={14} maxW={{ base: "md", md: "xl" }}>
+    <Container pt={14} maxW={{ base: "md", md: "2xl" }} className="page-fade-in">
+      <Heading fontSize="2xl" mb={2}>
+        My Journey
+      </Heading>
+      <Text mb={4} opacity={0.7}>
+        Thoughts and reflections from my experiences.
+      </Text>
       <iframe
         title="Journey blog on note.com"
         className="note-embed"
@@ -14,14 +20,14 @@ export default function Page() {
         style={{
           border: "0",
           display: "block",
-          maxWidth: "99%",
-          width: "494px",
+          width: "100%",
           padding: "0px",
           margin: "10px 0px",
           position: "static",
           visibility: "visible",
         }}
         height="400"
+        loading="lazy"
       ></iframe>
       <Script
         src="https://note.com/scripts/embed.js"

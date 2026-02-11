@@ -1,5 +1,7 @@
 "use client";
 
+import dynamic from "next/dynamic";
+import IslandLoader from "@/components/three/island-loader";
 import {
   Box,
   Container,
@@ -7,10 +9,10 @@ import {
   Heading,
   Text,
   Link,
-  VStack,
+  HStack,
+  IconButton,
 } from "@chakra-ui/react";
 import { Avatar } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
 import { useColorModeValue } from "@/components/ui/color-mode";
 import { FaFacebookSquare, FaLinkedin, FaInstagram, FaEnvelope } from "react-icons/fa";
 import Ongoing from "@/components/about/ongoing";
@@ -21,13 +23,20 @@ import Resume from "@/components/about/resume";
 import PageBanner from "@/components/page-banner";
 import SectionHeading from "@/components/section-heading";
 
+const LazyIsland = dynamic(() => import("@/components/three/island"), {
+  ssr: false,
+  loading: () => <IslandLoader />,
+});
+
 export default function Page() {
   const headingClassName = useColorModeValue("text-shadow-lg", "");
   const textClassName = useColorModeValue("text-shadow-sm", "");
 
   return (
-    <Container pt={8} maxW={{ base: "md", md: "2xl" }}>
-      <Box>
+    <>
+      <LazyIsland />
+      <Container pt={8} maxW={{ base: "md", md: "2xl" }} className="page-fade-in">
+        <Box>
         <PageBanner>
           Hey👋, I study Computer Science at{" "}
           <Text as="span" display={{ base: "inline", md: "none" }}>
@@ -81,7 +90,7 @@ export default function Page() {
         <Like />
 
         <SectionHeading>Contact</SectionHeading>
-        <VStack alignItems="flex-start" gap="1">
+        <HStack gap={3}>
           {profile.contacts.map((contact) => {
             const icons: Record<string, React.ReactNode> = {
               linkedin: <FaLinkedin />,
@@ -95,17 +104,23 @@ export default function Page() {
                 href={contact.url}
                 aria-label={contact.platform}
               >
-                <Button size="md" colorPalette="cyan" variant="ghost">
-                  {icons[contact.platform]} {contact.label}
-                </Button>
+                <IconButton
+                  aria-label={contact.platform}
+                  variant="ghost"
+                  colorPalette="cyan"
+                  size="md"
+                >
+                  {icons[contact.platform]}
+                </IconButton>
               </Link>
             );
           })}
-        </VStack>
+        </HStack>
 
         <SectionHeading>Resume</SectionHeading>
         <Resume />
       </Box>
-    </Container>
+      </Container>
+    </>
   );
 }

@@ -25,7 +25,7 @@ import { works } from "@/data/works";
 
 export default function Page() {
   return (
-    <Container pt={8} maxW={{ base: "md", md: "2xl" }}>
+    <Container pt={14} maxW={{ base: "md", md: "2xl" }} className="page-fade-in">
       <PageBanner>
         I&apos;m seeking for{" "}
         <Text as="span" colorPalette="cyan" fontWeight="semibold">
@@ -60,7 +60,7 @@ export default function Page() {
                   {work.company}
                 </TimelineDescription>
               </Link>
-              <Stack direction="row" mt={1} mb={2}>
+              <Stack direction="row" mt={1} mb={2} flexWrap="wrap">
                 <Badge variant={{ _dark: "outline", _light: "solid" }}>
                   {work.dateRange}
                 </Badge>

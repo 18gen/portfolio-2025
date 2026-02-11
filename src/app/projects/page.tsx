@@ -61,7 +61,7 @@ export default function Page() {
   }, []);
 
   return (
-    <Container pt={14} maxW={{ base: "md", md: "3xl" }}>
+    <Container pt={14} maxW={{ base: "md", md: "3xl" }} className="page-fade-in">
       <PageBanner>
         Check out my{" "}
         <Link
@@ -93,10 +93,11 @@ export default function Page() {
               width="100%"
               height="auto"
               style={{ objectFit: "cover" }}
-              autoPlay
+              preload="none"
               loop
               muted
               playsInline
+              controls
             >
               <source src={project.video} type="video/mp4" />
               Your browser does not support the video tag.
@@ -164,7 +165,20 @@ export default function Page() {
             </Box>
           ))
         ) : (
-          <Text>Loading repositories...</Text>
+          [1, 2, 3].map((i) => (
+            <Box
+              key={i}
+              p={4}
+              minW="300px"
+              borderWidth="1px"
+              borderRadius="lg"
+              background={backgroundColor}
+            >
+              <Box h="20px" w="60%" bg="gray.200" borderRadius="md" mb={2} />
+              <Box h="14px" w="90%" bg="gray.100" borderRadius="md" mb={2} />
+              <Box h="10px" w="40%" bg="gray.100" borderRadius="md" />
+            </Box>
+          ))
         )}
       </Flex>
     </Container>
