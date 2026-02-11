@@ -12,10 +12,9 @@ import {
 import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { useColorModeValue } from "@/components/ui/color-mode";
-import { FaFacebookSquare } from "react-icons/fa";
-import { FaLinkedin, FaInstagram } from "react-icons/fa";
-
+import { FaFacebookSquare, FaLinkedin, FaInstagram, FaEnvelope } from "react-icons/fa";
 import Ongoing from "@/components/about/ongoing";
+import { profile } from "@/data/profile";
 import Bio from "@/components/about/bio";
 import Like from "@/components/about/like";
 import Resume from "@/components/about/resume";
@@ -58,10 +57,10 @@ export default function Page() {
               lineHeight="short"
               className={headingClassName}
             >
-              Gen Ichihashi
+              {profile.name}
             </Heading>
             <Text className={textClassName}>
-              Full-Stack Developer based in Canada/Japan
+              {profile.tagline}
             </Text>
           </Box>
           <Box mt={{ base: 4, md: 0 }} textAlign="center">
@@ -71,8 +70,8 @@ export default function Page() {
               outlineStyle="solid"
               w="100px"
               h="100px"
-              name="Gen"
-              src="me2.jpg"
+              name={profile.name}
+              src={profile.avatar}
             />
           </Box>
         </Flex>
@@ -125,22 +124,25 @@ export default function Page() {
           Contact
         </Heading>
         <VStack alignItems="flex-start" gap="1">
-          <Link href="https://www.linkedin.com/in/gen-ichihashi">
-            <Button size={"md"} colorPalette="cyan" variant="ghost">
-              {<FaLinkedin />} @Gen_Ichihashi
-            </Button>
-          </Link>
-          <Link href="https://www.facebook.com/ichihashigen">
-            <Button size={"md"} colorPalette="cyan" variant="ghost">
-              {<FaFacebookSquare />} @Ichihashi_Gen
-            </Button>
-          </Link>
-          <Link href="https://www.instagram.com/ichigen3215">
-            <Button size={"md"} colorPalette="cyan" variant="ghost">
-              {<FaInstagram />} @ichigen3215
-            </Button>
-          </Link>
-          <Text>gmail: ichihashigen@gmail.com</Text>
+          {profile.contacts.map((contact) => {
+            const icons: Record<string, React.ReactNode> = {
+              linkedin: <FaLinkedin />,
+              facebook: <FaFacebookSquare />,
+              instagram: <FaInstagram />,
+              email: <FaEnvelope />,
+            };
+            return (
+              <Link
+                key={contact.platform}
+                href={contact.url}
+                aria-label={contact.platform}
+              >
+                <Button size="md" colorPalette="cyan" variant="ghost">
+                  {icons[contact.platform]} {contact.label}
+                </Button>
+              </Link>
+            );
+          })}
         </VStack>
 
         <Heading

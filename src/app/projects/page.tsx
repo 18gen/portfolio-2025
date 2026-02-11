@@ -15,6 +15,7 @@ import { Card } from "@chakra-ui/react";
 import { Link } from "@chakra-ui/react";
 import { FaGithub } from "react-icons/fa";
 import { projects } from "@/data/projects";
+import { profile } from "@/data/profile";
 
 type GitHubRepo = {
   name: string;
@@ -28,7 +29,7 @@ export default function Page() {
   const backgroundColor = useColorModeValue("whiteAlpha.800", "whiteAlpha.200");
 
   useEffect(() => {
-    fetch("https://api.github.com/users/18gen/repos")
+    fetch(`https://api.github.com/users/${profile.githubUsername}/repos`)
       .then((response) => response.json())
       .then((data) => {
         const sortedRepos = data
@@ -59,7 +60,7 @@ export default function Page() {
           variant="underline"
           colorPalette="cyan"
           fontWeight="bold"
-          href="https://devpost.com/18gen?ref_content=user-portfolio&ref_feature=portfolio&ref_medium=global-nav"
+          href={profile.externalProfiles.devpost}
         >
           {" "}
           DevPost
@@ -69,7 +70,7 @@ export default function Page() {
           variant="underline"
           colorPalette="cyan"
           fontWeight="bold"
-          href="https://protopedia.net/prototyper/ichigen3215"
+          href={profile.externalProfiles.protopedia}
         >
           Protopedia
         </Link>
@@ -121,7 +122,7 @@ export default function Page() {
       <Text mb={4}>
         Check out my other projects and updates on{" "}
         <Link
-          href="https://github.com/18gen"
+          href={profile.githubUrl}
           variant="underline"
           fontWeight="bold"
           colorPalette="cyan"

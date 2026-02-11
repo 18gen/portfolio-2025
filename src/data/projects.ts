@@ -1,11 +1,10 @@
+import { Technology } from "./types";
+
 export interface ProjectEntry {
   id: string;
   title: string;
   video: string;
-  technologies: {
-    name: string;
-    colorPalette: string;
-  }[];
+  technologies: Technology[];
   description: string;
   sourceUrl?: string;
 }

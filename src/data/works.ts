@@ -1,3 +1,5 @@
+import { Technology } from "./types";
+
 export interface WorkEntry {
   id: string;
   title: string;
@@ -5,10 +7,7 @@ export interface WorkEntry {
   companyUrl: string;
   image: string;
   dateRange: string;
-  technologies: {
-    name: string;
-    colorPalette: string;
-  }[];
+  technologies: Technology[];
   responsibilities: string[];
 }
 
