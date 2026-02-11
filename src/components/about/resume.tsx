@@ -4,7 +4,6 @@ import {
   Text,
   Image,
   LinkBox,
-  // LinkOverlay,
   Button,
   Link,
 } from "@chakra-ui/react";
@@ -24,8 +23,6 @@ export default function Resume() {
               borderRadius="md"
               h={{ md: "400px" }}
             />
-            {/* <LinkOverlay href="https://drive.google.com/file/d/1n2inKycKhVcyljAyL3CyIsnsW9F2K8Xu/view?usp=sharing" />
-             */}
             <Button
               position="absolute"
               top="50%"
@@ -52,7 +49,6 @@ export default function Resume() {
               borderRadius="md"
               h={{ md: "400px" }}
             />
-            {/* <LinkOverlay href="https://drive.google.com/drive/folders/1_gwuFC16BVosXXKsgmacPWfzTrud__4_?usp=sharing" /> */}
             <Button
               position="absolute"
               top="50%"

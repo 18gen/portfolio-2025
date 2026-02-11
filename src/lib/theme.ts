@@ -45,12 +45,6 @@ const config = defineConfig({
         body: { value: "sm" },
       },
     },
-
-    // textStyles : {
-    //   value: {
-    //     fontFamily: 'M PLUS Rounded 1c',
-    //   }
-    // }
   },
 });
 

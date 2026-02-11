@@ -8,8 +8,8 @@ import {
   Container,
   Link,
 } from "@chakra-ui/react";
-import { ColorModeButton } from "../components/ui/color-mode";
-import { ButtonWithState } from "./ui/buttonWithState";
+import { ColorModeButton, useColorModeValue } from "@/components/ui/color-mode";
+import { Button } from "@/components/ui/button";
 import NextLink from "next/link";
 import Logo from "./logo";
 import {
@@ -24,6 +24,8 @@ import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const path = usePathname();
+  const selectedBg = useColorModeValue("#1B202B", "white");
+  const selectedColor = useColorModeValue("white", "black");
 
   return (
     <Box
@@ -53,19 +55,31 @@ export default function Navbar() {
           fontWeight={"semibold"}
         >
           <NextLink href="/works">
-            <ButtonWithState variant={"ghost"} selected={path === "/works"}>
+            <Button
+              variant="ghost"
+              backgroundColor={path === "/works" ? selectedBg : undefined}
+              color={path === "/works" ? selectedColor : undefined}
+            >
               Works
-            </ButtonWithState>
+            </Button>
           </NextLink>
           <NextLink href="/projects">
-            <ButtonWithState variant={"ghost"} selected={path === "/projects"}>
+            <Button
+              variant="ghost"
+              backgroundColor={path === "/projects" ? selectedBg : undefined}
+              color={path === "/projects" ? selectedColor : undefined}
+            >
               Projects
-            </ButtonWithState>
+            </Button>
           </NextLink>
           <NextLink href="/journey">
-            <ButtonWithState variant={"ghost"} selected={path === "/journey"}>
+            <Button
+              variant="ghost"
+              backgroundColor={path === "/journey" ? selectedBg : undefined}
+              color={path === "/journey" ? selectedColor : undefined}
+            >
               Journey
-            </ButtonWithState>
+            </Button>
           </NextLink>
         </Stack>
 
