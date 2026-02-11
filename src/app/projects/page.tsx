@@ -14,6 +14,8 @@ import { useColorModeValue } from "@/components/ui/color-mode";
 import { Card } from "@chakra-ui/react";
 import { Link } from "@chakra-ui/react";
 import { FaGithub } from "react-icons/fa";
+import { projects } from "@/data/projects";
+
 type GitHubRepo = {
   name: string;
   html_url: string;
@@ -26,7 +28,6 @@ export default function Page() {
   const backgroundColor = useColorModeValue("whiteAlpha.800", "whiteAlpha.200");
 
   useEffect(() => {
-    // Fetch public repositories from your GitHub account
     fetch("https://api.github.com/users/18gen/repos")
       .then((response) => response.json())
       .then((data) => {
@@ -36,7 +37,7 @@ export default function Page() {
               new Date(b.updated_at).getTime() -
               new Date(a.updated_at).getTime(),
           )
-          .slice(0, 5); // Get the latest 5 repos
+          .slice(0, 5);
         setRepos(sortedRepos);
       })
       .catch((error) => console.error("Error fetching GitHub data:", error));
@@ -76,235 +77,42 @@ export default function Page() {
       </Box>
 
       <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} gap={6}>
-        <Card.Root variant="subtle" overflow="hidden">
-          <video
-            width="100%"
-            height="auto"
-            style={{ objectFit: "cover" }}
-            autoPlay
-            loop
-            muted
-            playsInline
-          >
-            <source src="projects/metaConnect.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          <Card.Body gap="2">
-            <Card.Title>Meta Connect</Card.Title>
-            <Stack direction="row">
-              <Badge
-                colorPalette="blue"
-                variant={{ _dark: "outline", _light: "solid" }}
-              >
-                Next.js
-              </Badge>
-              <Badge
-                colorPalette="red"
-                variant={{ _dark: "outline", _light: "solid" }}
-              >
-                Nebius
-              </Badge>
-              <Badge
-                colorPalette="green"
-                variant={{ _dark: "outline", _light: "solid" }}
-              >
-                Llama 3.2
-              </Badge>
-            </Stack>
-            <Card.Description>
-              Platform where <strong>AI agents</strong> copy your communication
-              style and chat on your behalf with other AI agents. They randomly
-              match you, measure compatibility, and even suggest what to say
-              next—making it easy to start talking to new people.
-            </Card.Description>
-            <Link href="https://github.com/Ri-Hong/Meta-Connect">
-              <FaGithub /> Source Code
-            </Link>
-          </Card.Body>
-        </Card.Root>
-
-        <Card.Root variant="subtle" overflow="hidden">
-          <video
-            width="100%"
-            height="auto"
-            style={{ objectFit: "cover" }}
-            autoPlay
-            loop
-            muted
-            playsInline
-          >
-            <source src="projects/liveStory.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          <Card.Body gap="2">
-            <Card.Title>LiveStory</Card.Title>
-            <Stack direction="row">
-              <Badge
-                colorPalette="blue"
-                variant={{ _dark: "outline", _light: "solid" }}
-              >
-                Reflex
-              </Badge>
-              <Badge
-                colorPalette="red"
-                variant={{ _dark: "outline", _light: "solid" }}
-              >
-                Python
-              </Badge>
-              <Badge
-                colorPalette="green"
-                variant={{ _dark: "outline", _light: "solid" }}
-              >
-                Vapi API
-              </Badge>
-            </Stack>
-            <Card.Description>
-              An <strong>interactive storybook</strong> where characters come to
-              life, letting children engage with them in real time to explore
-              emotions and ask questions. With AI voice-to-voice pipelines,
-              readers can feel the emotion of their characters.
-            </Card.Description>
-            <Link href="https://github.com/pranavbedi/LiveStory">
-              <FaGithub /> Source Code
-            </Link>
-          </Card.Body>
-        </Card.Root>
-
-        <Card.Root variant="subtle" overflow="hidden">
-          <video
-            width="100%"
-            height="auto"
-            style={{ objectFit: "cover" }}
-            autoPlay
-            loop
-            muted
-            playsInline
-          >
-            <source src="projects/memoryLane.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          <Card.Body gap="2">
-            <Card.Title>Y+Our Memory Lane</Card.Title>
-            <Stack direction="row">
-              <Badge
-                colorPalette="blue"
-                variant={{ _dark: "outline", _light: "solid" }}
-              >
-                HTML/CSS
-              </Badge>
-              <Badge
-                colorPalette="red"
-                variant={{ _dark: "outline", _light: "solid" }}
-              >
-                django
-              </Badge>
-              <Badge
-                colorPalette="green"
-                variant={{ _dark: "outline", _light: "solid" }}
-              >
-                googleMap/Cohere API
-              </Badge>
-            </Stack>
-            <Card.Description>
-              Crafted during <strong>UofTHack11</strong> with a theme of{" "}
-              <strong>Nostalgia</strong>, it showcases street view in time lapse
-              at the exact same perspective. It also tells stories about the
-              location&apos;s landmarks and history, enhancing the nostalgic
-              journey. Users can also contribute personal snapshots and tales,
-              merging &apos;your and our&apos; memory lanes into a shared
-              narrative.
-            </Card.Description>
-            <Link href="https://github.com/18gen/UofTHacks2024">
-              <FaGithub /> Source Code
-            </Link>
-          </Card.Body>
-        </Card.Root>
-
-        <Card.Root variant="subtle" overflow="hidden">
-          <video
-            width="100%"
-            height="auto"
-            style={{ objectFit: "cover" }}
-            autoPlay
-            loop
-            muted
-            playsInline
-          >
-            <source src="projects/receiptGenerator.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          <Card.Body gap="2">
-            <Card.Title>Sustainable Chef</Card.Title>
-            <Stack direction="row">
-              <Badge
-                colorPalette="blue"
-                variant={{ _dark: "outline", _light: "solid" }}
-              >
-                HTML/CSS
-              </Badge>
-              <Badge
-                colorPalette="red"
-                variant={{ _dark: "outline", _light: "solid" }}
-              >
-                Flask
-              </Badge>
-              <Badge
-                colorPalette="green"
-                variant={{ _dark: "outline", _light: "solid" }}
-              >
-                OpenAI/DALL-E API
-              </Badge>
-            </Stack>
-            <Card.Description>
-              Cooking assistant web-app built at{" "}
-              <strong>Hack the Change</strong> that helps reduce food waste, by
-              tracking the expiry dates of groceries and suggesting recipes
-              using those ingredients. Based on the recipes, it also generates a
-              resulting image and transforms leftover management into a creative
-              and sustainable culinary experience.
-            </Card.Description>
-            <Link href="https://github.com/18gen/receipt-generator">
-              <FaGithub /> Source Code
-            </Link>
-          </Card.Body>
-        </Card.Root>
-        <Card.Root variant="subtle" overflow="hidden">
-          <video
-            width="100%"
-            height="auto"
-            style={{ objectFit: "cover" }}
-            autoPlay
-            loop
-            muted
-            playsInline
-          >
-            <source src="projects/chessGame.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          <Card.Body gap="2">
-            <Card.Title>Chess Game</Card.Title>
-            <Stack direction="row">
-              <Badge
-                colorPalette="blue"
-                variant={{ _dark: "outline", _light: "solid" }}
-              >
-                XQuartz
-              </Badge>
-              <Badge
-                colorPalette="red"
-                variant={{ _dark: "outline", _light: "solid" }}
-              >
-                C++
-              </Badge>
-            </Stack>
-            <Card.Description>
-              The chess game, built exclusively with C++ for CS246 group
-              project, features AI players(levels 1 to 4) and includes graphics
-              using XQuartz. *The source code is not shareable due to academic
-              policies
-            </Card.Description>
-          </Card.Body>
-        </Card.Root>
+        {projects.map((project) => (
+          <Card.Root key={project.id} variant="subtle" overflow="hidden">
+            <video
+              width="100%"
+              height="auto"
+              style={{ objectFit: "cover" }}
+              autoPlay
+              loop
+              muted
+              playsInline
+            >
+              <source src={project.video} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <Card.Body gap="2">
+              <Card.Title>{project.title}</Card.Title>
+              <Stack direction="row">
+                {project.technologies.map((tech) => (
+                  <Badge
+                    key={tech.name}
+                    colorPalette={tech.colorPalette}
+                    variant={{ _dark: "outline", _light: "solid" }}
+                  >
+                    {tech.name}
+                  </Badge>
+                ))}
+              </Stack>
+              <Card.Description>{project.description}</Card.Description>
+              {project.sourceUrl && (
+                <Link href={project.sourceUrl}>
+                  <FaGithub /> Source Code
+                </Link>
+              )}
+            </Card.Body>
+          </Card.Root>
+        ))}
       </Grid>
 
       <Heading size="lg" mt={4}>
