@@ -18,24 +18,17 @@ import { profile } from "@/data/profile";
 import Bio from "@/components/about/bio";
 import Like from "@/components/about/like";
 import Resume from "@/components/about/resume";
+import PageBanner from "@/components/page-banner";
+import SectionHeading from "@/components/section-heading";
 
 export default function Page() {
-  const backgroundColor = useColorModeValue("whiteAlpha.800", "whiteAlpha.200");
   const headingClassName = useColorModeValue("text-shadow-lg", "");
   const textClassName = useColorModeValue("text-shadow-sm", "");
 
   return (
     <Container pt={8} maxW={{ base: "md", md: "2xl" }}>
       <Box>
-        <Box
-          borderRadius="lg"
-          p={3}
-          mb={5}
-          textAlign="center"
-          background={backgroundColor}
-          width="100%"
-          css={{ backdropFilter: "blur(10px)" }}
-        >
+        <PageBanner>
           Hey👋, I study Computer Science at{" "}
           <Text as="span" display={{ base: "inline", md: "none" }}>
             UWaterloo
@@ -43,7 +36,7 @@ export default function Page() {
           <Text as="span" display={{ base: "none", md: "inline" }}>
             University of Waterloo
           </Text>
-        </Box>
+        </PageBanner>
 
         <Flex
           direction={{ base: "column", md: "row" }}
@@ -76,53 +69,18 @@ export default function Page() {
           </Box>
         </Flex>
       </Box>
-      <Heading
-        py={2}
-        fontSize={{ base: "lg", md: "xl" }}
-        textDecoration="underline"
-        textDecorationThickness="4px"
-        textUnderlineOffset="3px"
-        textDecorationColor="gray"
-      >
-        Ongoing
-      </Heading>
+
+      <SectionHeading>Ongoing</SectionHeading>
       <Ongoing />
 
       <Box data-state="open" mt={{ base: "10px", md: "15px" }}>
-        <Heading
-          py={2}
-          fontSize={{ base: "lg", md: "xl" }}
-          textDecoration="underline"
-          textDecorationThickness="4px"
-          textUnderlineOffset="3px"
-          textDecorationColor="gray"
-        >
-          Bio
-        </Heading>
+        <SectionHeading>Bio</SectionHeading>
         <Bio />
 
-        <Heading
-          py={2}
-          fontSize={{ base: "lg", md: "xl" }}
-          textDecoration="underline"
-          textDecorationThickness="4px"
-          textUnderlineOffset="3px"
-          textDecorationColor="gray"
-        >
-          I♥
-        </Heading>
+        <SectionHeading>I♥</SectionHeading>
         <Like />
 
-        <Heading
-          py={2}
-          fontSize={{ base: "lg", md: "xl" }}
-          textDecoration="underline"
-          textDecorationThickness="4px"
-          textUnderlineOffset="3px"
-          textDecorationColor="gray"
-        >
-          Contact
-        </Heading>
+        <SectionHeading>Contact</SectionHeading>
         <VStack alignItems="flex-start" gap="1">
           {profile.contacts.map((contact) => {
             const icons: Record<string, React.ReactNode> = {
@@ -145,16 +103,7 @@ export default function Page() {
           })}
         </VStack>
 
-        <Heading
-          py={2}
-          fontSize={{ base: "lg", md: "xl" }}
-          textDecoration="underline"
-          textDecorationThickness="4px"
-          textUnderlineOffset="3px"
-          textDecorationColor="gray"
-        >
-          Resume
-        </Heading>
+        <SectionHeading>Resume</SectionHeading>
         <Resume />
       </Box>
     </Container>

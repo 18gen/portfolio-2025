@@ -6,6 +6,7 @@ import {
   Heading,
   Text,
   Badge,
+  Flex,
   Grid,
   Stack,
 } from "@chakra-ui/react";
@@ -16,6 +17,7 @@ import { Link } from "@chakra-ui/react";
 import { FaGithub } from "react-icons/fa";
 import { projects } from "@/data/projects";
 import { profile } from "@/data/profile";
+import PageBanner from "@/components/page-banner";
 
 type GitHubRepo = {
   name: string;
@@ -46,15 +48,7 @@ export default function Page() {
 
   return (
     <Container pt={14} maxW={{ base: "md", md: "3xl" }}>
-      <Box
-        borderRadius="lg"
-        p={3}
-        mb={5}
-        textAlign="center"
-        background={backgroundColor}
-        width="100%"
-        css={{ backdropFilter: "blur(10px)" }}
-      >
+      <PageBanner>
         Check out my{" "}
         <Link
           variant="underline"
@@ -75,7 +69,7 @@ export default function Page() {
           Protopedia
         </Link>
         {"... 🤖"}
-      </Box>
+      </PageBanner>
 
       <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} gap={6}>
         {projects.map((project) => (
@@ -130,15 +124,7 @@ export default function Page() {
           <FaGithub /> GitHub
         </Link>
       </Text>
-      {/* https://github.com/arifszn/gitprofile?tab=readme-ov-file */}
-      <Grid
-        templateColumns="1fr"
-        gap={6}
-        overflowX="auto"
-        display="flex"
-        flexWrap="nowrap"
-        pb={4}
-      >
+      <Flex gap={6} overflowX="auto" flexWrap="nowrap" pb={4}>
         {repos.length > 0 ? (
           repos.map((repo) => (
             <Box
@@ -163,7 +149,7 @@ export default function Page() {
         ) : (
           <Text>Loading repositories...</Text>
         )}
-      </Grid>
+      </Flex>
     </Container>
   );
 }

@@ -7,7 +7,6 @@ import {
   Stack,
   List,
   Badge,
-  Box,
   Text,
   Link,
 } from "@chakra-ui/react";
@@ -20,30 +19,20 @@ import {
   TimelineTitle,
 } from "@/components/ui/timeline";
 import { Avatar } from "@/components/ui/avatar";
-import { useColorModeValue } from "@/components/ui/color-mode";
 import Resume from "@/components/about/resume";
+import PageBanner from "@/components/page-banner";
 import { works } from "@/data/works";
 
 export default function Page() {
-  const backgroundColor = useColorModeValue("whiteAlpha.800", "whiteAlpha.200");
-
   return (
     <Container pt={8} maxW={{ base: "md", md: "2xl" }}>
-      <Box
-        borderRadius="lg"
-        p={3}
-        mb={5}
-        textAlign="center"
-        background={backgroundColor}
-        width="100%"
-        css={{ backdropFilter: "blur(10px)" }}
-      >
+      <PageBanner>
         I&apos;m seeking for{" "}
         <Text as="span" colorPalette="cyan" fontWeight="semibold">
           2025 Summer Internship
         </Text>
         {"... 🚀"}
-      </Box>
+      </PageBanner>
       <Heading fontSize="2xl" mb="4">
         Experiences
       </Heading>
