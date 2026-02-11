@@ -20,6 +20,7 @@ export default function Page() {
   return (
     <Container pt={14} maxW={{ base: "md", md: "xl" }}>
       <iframe
+        title="Journey blog on note.com"
         className="note-embed"
         src="https://note.com/embed/notes/n062f7019e8b7"
         style={{

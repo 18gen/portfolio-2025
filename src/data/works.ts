@@ -59,7 +59,7 @@ export const works: WorkEntry[] = [
     technologies: [{ name: "Management", colorPalette: "green" }],
     responsibilities: [
       "Leading a team of 40 members in organizing a 300-participant hackathon on Jan. 25-26, 2025",
-      "Scured $22k from industry giants such as Google, SunLife, and CS-CAN",
+      "Secured $22k from industry giants such as Google, SunLife, and CS-CAN",
     ],
   },
   {

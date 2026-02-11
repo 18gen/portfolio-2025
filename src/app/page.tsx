@@ -15,7 +15,6 @@ import { useColorModeValue } from "@/components/ui/color-mode";
 import { FaFacebookSquare } from "react-icons/fa";
 import { FaLinkedin, FaInstagram } from "react-icons/fa";
 
-import "./globals.css";
 import Ongoing from "@/components/about/ongoing";
 import Bio from "@/components/about/bio";
 import Like from "@/components/about/like";
@@ -80,10 +79,10 @@ export default function Page() {
       </Box>
       <Heading
         py={2}
-        fontSize={{ base: "lg", md: "1xl" }}
+        fontSize={{ base: "lg", md: "xl" }}
         textDecoration="underline"
         textDecorationThickness="4px"
-        textUnderlineOffset="4px"
+        textUnderlineOffset="3px"
         textDecorationColor="gray"
       >
         Ongoing
@@ -93,7 +92,7 @@ export default function Page() {
       <Box data-state="open" mt={{ base: "10px", md: "15px" }}>
         <Heading
           py={2}
-          fontSize={{ base: "lg", md: "1xl" }}
+          fontSize={{ base: "lg", md: "xl" }}
           textDecoration="underline"
           textDecorationThickness="4px"
           textUnderlineOffset="3px"
@@ -105,7 +104,7 @@ export default function Page() {
 
         <Heading
           py={2}
-          fontSize={{ base: "lg", md: "1xl" }}
+          fontSize={{ base: "lg", md: "xl" }}
           textDecoration="underline"
           textDecorationThickness="4px"
           textUnderlineOffset="3px"
@@ -117,7 +116,7 @@ export default function Page() {
 
         <Heading
           py={2}
-          fontSize={{ base: "lg", md: "1xl" }}
+          fontSize={{ base: "lg", md: "xl" }}
           textDecoration="underline"
           textDecorationThickness="4px"
           textUnderlineOffset="3px"
@@ -146,7 +145,7 @@ export default function Page() {
 
         <Heading
           py={2}
-          fontSize={{ base: "lg", md: "1xl" }}
+          fontSize={{ base: "lg", md: "xl" }}
           textDecoration="underline"
           textDecorationThickness="4px"
           textUnderlineOffset="3px"

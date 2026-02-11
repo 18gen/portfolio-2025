@@ -75,7 +75,7 @@ export default function Ongoing() {
         <Card.Root width="260px" height="200px" size="md" variant="subtle">
           <Card.Body>
             <HStack mb="3" gap="3">
-              <Avatar src="works/mics.jpg" name="Geesehacks" />
+              <Avatar src="works/mics.jpg" name="MICS" />
               <Heading fontWeight="md" fontSize="md">
                 Software Engineer
               </Heading>

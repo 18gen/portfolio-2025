@@ -11,13 +11,13 @@ export default function Bio() {
         <Table.Row>
           <Table.Cell fontWeight={"bold"}>2019</Table.Cell>
           <Table.Cell>
-            Graduted from Honjo Juninor High School (Gifu, Japan)
+            Graduated from Honjo Junior High School (Gifu, Japan)
           </Table.Cell>
         </Table.Row>
         <Table.Row>
           <Table.Cell fontWeight={"bold"}>2022</Table.Cell>
           <Table.Cell>
-            Graduted from Sequam Secondary School (Delta, BC, Canada)
+            Graduated from Sequam Secondary School (Delta, BC, Canada)
           </Table.Cell>
         </Table.Row>
         <Table.Row>

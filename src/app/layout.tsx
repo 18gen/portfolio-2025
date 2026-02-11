@@ -1,5 +1,6 @@
 "use client";
 
+import "./globals.css";
 import Provider from "./provider";
 import Navbar from "@/components/navbar";
 import dynamic from "next/dynamic";
@@ -16,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head />
       <body>
         <Provider>
