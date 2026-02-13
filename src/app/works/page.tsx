@@ -60,7 +60,7 @@ export default function Page() {
                   {work.company}
                 </TimelineDescription>
               </Link>
-              <Stack direction="row" mt={1} mb={2}>
+              <Stack direction="row" mt={1} mb={2} flexWrap="wrap" gap={1}>
                 <Badge variant={{ _dark: "outline", _light: "solid" }}>
                   {work.dateRange}
                 </Badge>
