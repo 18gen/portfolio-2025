@@ -5,7 +5,6 @@ import Script from "next/script";
 import {
   Box,
   Container,
-  Flex,
   Image,
   Text,
   Link,
