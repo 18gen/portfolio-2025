@@ -36,7 +36,7 @@ export const works: WorkEntry[] = [
     company: "Medical Informatics Co., Ltd.",
     companyUrl: "https://homis-mics.jp",
     image: "works/mics.jpg",
-    dateRange: "May 2024 - Present",
+    dateRange: "May 2024 - June 2025",
     technologies: [
       { name: "Next.js", colorPalette: "blue" },
       { name: "Ruby on Rails", colorPalette: "red" },
@@ -54,7 +54,7 @@ export const works: WorkEntry[] = [
     company: "GeeseHacks",
     companyUrl: "https://www.geesehacks.com",
     image: "works/geesehacks.jpg",
-    dateRange: "January 2024 - Present",
+    dateRange: "January 2024 - January 2025",
     technologies: [{ name: "Management", colorPalette: "green" }],
     responsibilities: [
       "Leading a team of 40 members in organizing a 300-participant hackathon on Jan. 25-26, 2025",
