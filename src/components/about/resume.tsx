@@ -16,7 +16,7 @@ export default function Resume() {
           English
         </Text>
         <Box position="relative">
-          <Link href="https://drive.google.com/file/d/1n2inKycKhVcyljAyL3CyIsnsW9F2K8Xu/view?usp=sharing">
+          <Link href="https://drive.google.com/file/d/1i6Dhdmmscaf88TFAWzoqazvFo0YGtQTs/view?usp=sharing">
             <Image
               src="works/Resume_2025.jpg"
               alt="Resume Preview English"
