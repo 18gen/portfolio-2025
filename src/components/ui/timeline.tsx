@@ -16,6 +16,5 @@ export const TimelineConnector = React.forwardRef<
 export const TimelineRoot = ChakraTimeline.Root;
 export const TimelineContent = ChakraTimeline.Content;
 export const TimelineItem = ChakraTimeline.Item;
-export const TimelineIndicator = ChakraTimeline.Indicator;
 export const TimelineTitle = ChakraTimeline.Title;
 export const TimelineDescription = ChakraTimeline.Description;
