@@ -14,7 +14,7 @@ export const bio: BioEntry[] = [
     event: "Graduated from Sequam Secondary School (Delta, BC, Canada)",
   },
   {
-    year: "2026",
+    year: "2027",
     event:
       "Expecting to graduate University of Waterloo (Waterloo, ON, Canada)",
   },

@@ -20,7 +20,7 @@ export default function Ongoing() {
             <HStack mb="3" gap="3">
               <Avatar src="ongoing/uw.svg.png" name="University of Waterloo" />
               <Heading fontWeight="md" fontSize="md">
-                4A Study Term
+                3B Study Term
               </Heading>
             </HStack>
             <Card.Description fontSize="sm">
