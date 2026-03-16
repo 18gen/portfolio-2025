@@ -8,6 +8,22 @@ import {
   Link,
 } from "@chakra-ui/react";
 
+function OpenPdfButton() {
+  return (
+    <Button
+      position="absolute"
+      top="50%"
+      left="50%"
+      transform="translate(-50%, -50%)"
+      px="4"
+      py="2"
+      variant="surface"
+    >
+      Open PDF
+    </Button>
+  );
+}
+
 export default function Resume() {
   return (
     <Flex gap={2} direction={{ base: "column", md: "row" }}>
@@ -18,22 +34,12 @@ export default function Resume() {
         <Box position="relative">
           <Link href="https://drive.google.com/file/d/1i6Dhdmmscaf88TFAWzoqazvFo0YGtQTs/view?usp=sharing">
             <Image
-              src="works/Resume_2025.jpg"
+              src="works/Resume_2026.jpg"
               alt="Resume Preview English"
               borderRadius="md"
               h={{ md: "400px" }}
             />
-            <Button
-              position="absolute"
-              top="50%"
-              left="50%"
-              transform="translate(-50%, -50%)"
-              px="4"
-              py="2"
-              variant="surface"
-            >
-              Open PDF
-            </Button>
+            <OpenPdfButton />
           </Link>
         </Box>
       </LinkBox>
@@ -49,17 +55,7 @@ export default function Resume() {
               borderRadius="md"
               h={{ md: "400px" }}
             />
-            <Button
-              position="absolute"
-              top="50%"
-              left="50%"
-              transform="translate(-50%, -50%)"
-              px="4"
-              py="2"
-              variant="surface"
-            >
-              Open PDF
-            </Button>
+            <OpenPdfButton />
           </Link>
         </Box>
       </LinkBox>
