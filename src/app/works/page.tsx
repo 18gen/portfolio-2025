@@ -29,7 +29,7 @@ export default function Page() {
       <PageBanner>
         I&apos;m seeking for{" "}
         <Text as="span" colorPalette="cyan" fontWeight="semibold">
-          2025 Summer Internship
+          2026 Internship
         </Text>
         {"... 🚀"}
       </PageBanner>
