@@ -6,7 +6,6 @@ import {
   Heading,
   Stack,
   List,
-  Badge,
   Text,
   Link,
 } from "@chakra-ui/react";
@@ -21,6 +20,7 @@ import {
 import { Avatar } from "@/components/ui/avatar";
 import Resume from "@/components/about/resume";
 import PageBanner from "@/components/page-banner";
+import TechBadges from "@/components/tech-badges";
 import { works } from "@/data/works";
 
 export default function Page() {
@@ -61,18 +61,7 @@ export default function Page() {
                 </TimelineDescription>
               </Link>
               <Stack direction="row" mt={1} mb={2} flexWrap="wrap" gap={1}>
-                <Badge variant={{ _dark: "outline", _light: "solid" }}>
-                  {work.dateRange}
-                </Badge>
-                {work.technologies.map((tech) => (
-                  <Badge
-                    key={tech.name}
-                    colorPalette={tech.colorPalette}
-                    variant={{ _dark: "outline", _light: "solid" }}
-                  >
-                    {tech.name}
-                  </Badge>
-                ))}
+                <TechBadges technologies={work.technologies} dateRange={work.dateRange} />
               </Stack>
               <List.Root>
                 {work.responsibilities.map((item, i) => (

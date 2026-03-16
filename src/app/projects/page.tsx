@@ -5,7 +5,6 @@ import {
   Container,
   Heading,
   Text,
-  Badge,
   Flex,
   Grid,
   Stack,
@@ -18,6 +17,8 @@ import { FaGithub } from "react-icons/fa";
 import { projects } from "@/data/projects";
 import { profile } from "@/data/profile";
 import PageBanner from "@/components/page-banner";
+import TechBadges from "@/components/tech-badges";
+import LazyVideo from "@/components/lazy-video";
 
 type GitHubRepo = {
   name: string;
@@ -88,31 +89,14 @@ export default function Page() {
       <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} gap={6}>
         {projects.map((project) => (
           <Card.Root key={project.id} variant="subtle" overflow="hidden">
-            <video
-              aria-label={`${project.title} demo`}
-              width="100%"
-              height="auto"
-              style={{ objectFit: "cover" }}
-              autoPlay
-              loop
-              muted
-              playsInline
-            >
-              <source src={project.video} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            <LazyVideo
+              src={project.video}
+              ariaLabel={`${project.title} demo`}
+            />
             <Card.Body gap="2">
               <Card.Title>{project.title}</Card.Title>
               <Stack direction="row">
-                {project.technologies.map((tech) => (
-                  <Badge
-                    key={tech.name}
-                    colorPalette={tech.colorPalette}
-                    variant={{ _dark: "outline", _light: "solid" }}
-                  >
-                    {tech.name}
-                  </Badge>
-                ))}
+                <TechBadges technologies={project.technologies} />
               </Stack>
               <Card.Description>{project.description}</Card.Description>
               {project.sourceUrl && (
